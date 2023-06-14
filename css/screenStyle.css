@@ -76,6 +76,7 @@ bottom: 0; /* Position the navbar at the bottom of the page */
    }
 
    #scaleble{
+       margin-top: 50px;
      display: block;
   margin-left: auto;
   margin-right: auto;
