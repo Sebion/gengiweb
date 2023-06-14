@@ -1,0 +1,281 @@
+
+* {
+margin: 0;
+padding: 0;
+cursor: crosshair;
+}
+body{
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;}
+
+h1{
+  text-align: center;
+
+  font-family: arial;
+  font-size: 3em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+
+}
+h3{
+  text-align: center;
+
+  font-family: 'VT323', monospace;
+
+}
+h4{
+  text-align: center;
+
+  font-family: 'VT323', monospace;
+  margin-top: 0;
+}
+
+table {
+  text-align: center;
+
+  font-family: 'VT323', monospace;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: 1px solid black;
+  margin-left: auto;
+ margin-right: auto;
+ margin-bottom: 2em;
+}
+td{
+  text-align: center;
+
+  font-family: 'VT323', monospace;
+  padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+}
+
+ol, ul{
+
+  margin: 2em;
+  font-family: 'VT323', monospace;
+  text-align: center;
+  list-style-position: inside;
+}
+
+
+footer{
+font-family: 'VT323', monospace;
+position: fixed; /* Set the navbar to fixed position */
+bottom: 0; /* Position the navbar at the bottom of the page */
+
+
+   }
+   img, svg{
+     display: block;
+  margin-left: auto;
+  margin-right: auto;
+   }
+   img:hover{
+   }
+
+   #scaleble{
+     display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform .2s;
+   }
+   #scaleble:hover{
+     transform:scale(1.1);
+
+   }
+
+.lists{
+  text-align: center;
+  list-style-position: inside;
+}
+
+#time{
+  text-align: right;
+  color: grey;
+
+  font-family: 'VT323', monospace;
+}
+#size{
+  text-align: left;
+  color: grey;
+  font-family: 'VT323', monospace;
+}
+
+.par
+{
+  text-align: center;
+  font-family: 'VT323', monospace;
+  margin: 1em;
+
+}
+
+
+
+.articles{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.articles > img{
+  position: relative;
+}
+.articles_in{
+  position: absolute;
+}
+.links_tv{
+  font-family: 'VT323', monospace;
+  color:white;
+  margin-top: 0.5em;
+  display: block;
+  text-align: center;
+}
+
+.links_tv:hover{
+  color: #2fff00;
+}
+.links:hover{
+  color: #ff0000;
+}
+
+
+#footlink{
+  font-family: 'VT323', monospace;
+  margin-top: 0.4em;
+}
+.links{
+
+  font-family: 'VT323', monospace;
+  margin-top: 0.5em;
+  display: block;
+  text-align: center;
+}
+
+.loader{
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .articles_in > p{
+  position: relative;
+
+}
+.articles_in > p::before,
+.articles_in > p::after {
+  font-family: 'VT323', monospace;
+    position: absolute;
+    content: attr(data-title);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.articles_in > p::before {
+  font-family: 'VT323', monospace;
+    color: #b8b8b8;
+    animation: move .5s;
+    animation-iteration-count: 3;
+    animation-delay: 0.7s;
+}
+
+.articles_in > p::after {
+  font-family: 'VT323', monospace;
+    color:#7a7a7a;
+    animation: move .3s ;
+    animation-iteration-count: 3;
+    animation-delay: 0.5s;
+} */
+
+.loader{
+
+  animation-name: fadeOut;
+  animation-duration: 3s;
+  opacity: 0;
+  visibility: hidden;
+}
+.loader > p{
+  position: relative;
+  font-size: 1.2em;
+}
+.loader > p::before,
+.loader > p::after {
+    position: absolute;
+    font-family: 'VT323', monospace;
+
+    content: attr(data-title);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.loader > p::before {
+  font-family: 'VT323', monospace;
+
+    color: #b8b8b8;
+    animation: move .5s;
+    animation-iteration-count: 3;
+    animation-delay: 0.7s;
+}
+
+.loader > p::after {
+  font-family: 'VT323', monospace;
+
+    color:#7a7a7a;
+    animation: move .3s ;
+    animation-iteration-count: 3;
+    animation-delay: 0.5s;
+}
+
+@keyframes move {
+    0% {
+    }
+
+    20% {
+        transform: translate(-2px, 3px);
+    }
+
+    40% {
+        transform: translate(-3px, -2px);
+    }
+
+    60% {
+        transform: translate(3px, 3px);
+    }
+
+    80% {
+        transform: translate(3px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+
+    }
+}
+@keyframes fadeOut {
+  0%{
+    opacity: 1;
+    visibility: visible;
+  }
+  99%{
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+}

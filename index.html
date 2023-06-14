@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>gengi</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/screenStyle.css">
+    <link rel="stylesheet" href="css/printStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div style="display: flex; justify-content: space-between;">
+    <p id="size"></p>
+
+    <script>
+
+        var size = document.getElementById("size");
+        go();
+        window.addEventListener('resize', go);
+
+        function go() {
+            var w = document.documentElement.clientWidth;
+            var h = document.documentElement.clientHeight;
+            size.innerHTML = w + "px x " + h + "px";
+        }
+    </script>
+
+    <p id="time"></p>
+
+    <script>
+        document.getElementById('time').innerHTML = Date();
+        setInterval(function () {
+            document.getElementById('time').innerHTML = Date();
+        }, 1000);
+
+    </script>
+</div>
+<div id="screensaver"
+     style="position: absolute; height: 100vh;
+  width: 100vw; left:0px; top: 0px; display: none; z-index:9999; background-color:black;">
+    <img id="dvd" style="height: 60px; width: 600px; position: absolute;
+  left: 0px;
+  top: 0px;" src="fig/gengiinverted.gif" alt="gif">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var mousetimeout;
+        var screensaver_active = false;
+        var idletime = 30;
+
+        function show_screensaver() {
+            $('#screensaver').fadeIn();
+            screensaver_active = true;
+            screensaver_animation();
+        }
+
+        function stop_screensaver() {
+            $('#screensaver').fadeOut();
+            screensaver_active = false;
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.round(Math.random() * 15)];
+            }
+            return color;
+        }
+
+        // $(document).click(function () {
+        //     clearTimeout(mousetimeout);
+        //
+        //     if (screensaver_active) {
+        //         stop_screensaver();
+        //     }
+        //
+        //     mousetimeout = setTimeout(function () {
+        //         show_screensaver();
+        //     }, 500 * idletime); // 5 secs
+        // });
+
+        $(document).mousemove(function () {
+            clearTimeout(mousetimeout);
+
+            if (screensaver_active) {
+                stop_screensaver();
+            }
+            mousetimeout = setTimeout(function () {
+                show_screensaver();
+            }, 1000 * idletime); // 5 secs
+        });
+
+        function screensaver_animation() {
+            if (screensaver_active) {
+                $('#screensaver').animate(
+                    {backgroundColor: getRandomColor()},
+                    400,
+                    screensaver_animation);
+            }
+        }
+    });
+</script>
+
+<script>
+    let x = 0,
+        y = 0,
+        dirX = 1,
+        dirY = 1;
+    const speed = 2;
+    let dvd = document.getElementById("dvd");
+    let screensaver = document.getElementById("screensaver");
+    const dvdWidth = dvd.clientWidth;
+    const dvdHeight = dvd.clientHeight;
+
+    function animate() {
+        const screenHeight = screensaver.clientHeight;
+        const screenWidth = screensaver.clientWidth;
+
+        if (y + dvdHeight +60 >= screenHeight || y < 0) {
+            dirY *= -1;
+
+        }
+        if (x + dvdWidth + 600>= screenWidth || x < 0) {
+            dirX *= -1;
+
+        }
+        x += dirX * speed;
+        y += dirY * speed;
+        dvd.style.left = x + "px";
+        dvd.style.top = y + "px";
+        window.requestAnimationFrame(animate);
+    }
+
+    window.requestAnimationFrame(animate);
+
+</script>
+<div class="articles">
+    <img src="fig/tv2.gif" alt="">
+    <div class="articles_in">
+        <p data-title="Shop"><a class="links_tv" href="article1.html">Shop</a></p>
+        <p data-title="Lookbook"><a class="links_tv" href="article2.html">Lookbook</a></p>
+        <p data-title="About us"><a class="links_tv" href="article3.html">About us</a></p>
+        <br>
+        <br>
+
+
+    </div>
+</div>
+<img style="height: 30px; width: 300px; position: fixed;
+  bottom: 5px;
+  right: 5px;" src="fig/gengifinal.gif" alt="gif">
+
+<footer>© 2023 gengi™. All rights reserved. Privacy Policy. Created by - <a href="mailto:hreskosebastian@gmail.com">Sebastian
+    Hresko</a>.
+</footer>
+</body>
+
+</html>

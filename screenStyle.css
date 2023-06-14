@@ -1,0 +1,103 @@
+
+* {
+margin: 0;
+padding: 0;
+}
+
+body{
+}
+
+h1{
+  text-align: center;
+
+  font-family: arial;
+  font-size: 3em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+
+}
+h3{
+  text-align: center;
+
+  font-family: 'VT323', monospace;
+
+}
+h4{
+  text-align: center;
+
+  font-family: 'VT323', monospace;
+  margin-top: 0;
+}
+
+table {
+  text-align: center;
+
+  font-family: 'VT323', monospace;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: 1px solid black;
+  margin-left: auto;
+ margin-right: auto;
+ margin-bottom: 2em;
+}
+td{
+  text-align: center;
+
+  font-family: 'VT323', monospace;
+  padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+}
+
+ol, ul{
+
+  margin: 2em;
+  font-family: 'VT323', monospace;
+  text-align: center;
+  list-style-position: inside;
+}
+
+
+footer{
+font-family: 'VT323', monospace;
+position: fixed; /* Set the navbar to fixed position */
+bottom: 0; /* Position the navbar at the bottom of the page */
+
+
+   }
+   img, svg{
+     display: block;
+  margin-left: auto;
+  margin-right: auto;
+   }
+
+.lists{
+  text-align: center;
+  list-style-position: inside;
+}
+.lists ul{
+
+}
+
+p
+{
+  text-align: center;
+  font-family: 'VT323', monospace;
+  margin: 1em;
+
+}
+
+.articles{
+  margin: 2em;
+}
+#footlink{
+
+  font-family: 'VT323', monospace;
+  margin-top: 0.4em;
+}
+.links{
+  font-family: 'VT323', monospace;
+  margin-top: 0.5em;
+  display: block;
+  text-align: center;
+}

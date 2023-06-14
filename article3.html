@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Article3</title>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="css/screenStyle.css">
+<link rel="stylesheet" href="css/printStyle.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div style="display: flex; justify-content: space-between;">
+    <p id="size"></p>
+
+    <script>
+
+        var x = document.getElementById("size");
+        go();
+        window.addEventListener('resize', go);
+
+        function go() {
+            var w = document.documentElement.clientWidth;
+            var h = document.documentElement.clientHeight;
+            x.innerHTML = w + "px x " + h + "px";
+        }
+    </script>
+
+    <p id="time"></p>
+
+    <script>
+        document.getElementById('time').innerHTML = Date();
+        setInterval(function () {
+            document.getElementById('time').innerHTML = Date();
+        }, 1000);
+
+    </script>
+</div>
+<a class="links" href="index.html">Home page</a>
+<p class="par">Vitaj na stranke 3</p>
+
+<img style="height: 30px; width: 300px; position: fixed;
+  bottom: 5px;
+  right: 5px;" src="fig/gengifinal.gif" alt="gif">
+<footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a href = "mailto:hreskosebastian@gmail.com">Sebastian Hresko</a>.</footer>
+
+</body>
+
+</html>

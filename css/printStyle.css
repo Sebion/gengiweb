@@ -1,0 +1,25 @@
+@media print {
+
+  h3,h4,table,td,ol,ul,a,.par,.links,#time,#size{
+    font-family: serif;
+  }
+    /* styles here */
+    header, footer, aside, img, svg , form, #scaleble {
+        display: none;
+    }
+
+article {
+    width:100%!important;
+    padding:0!important;
+    margin:0!important;
+  }
+
+@page {
+  margin: 2cm;
+}
+a:after {
+   content: "("attr(href)")";
+   font-family: serif;
+
+ }
+}
