@@ -113,6 +113,93 @@ bottom: 0; /* Position the navbar at the bottom of the page */
 }
 
 
+.form {
+    position: fixed;
+    width: 100%;
+    height: 80%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+textarea{
+    resize: none;
+}
+.form > label,input,textarea{
+    font-family: 'VT323', monospace;
+    display: block;
+    text-align: center;
+
+}
+
+
+.radio > input, label{
+    font-family: 'VT323', monospace;
+    display: inline;
+
+}
+.checkbox > input, label{
+    font-family: 'VT323', monospace;
+    display: inline;
+}
+label{
+    font-family: 'VT323', monospace;
+}
+#submitBtn{
+    padding: 0.5em 1em;
+    font-family: 'VT323', monospace;
+
+    margin-top: 0.5em;
+    display: inline;
+}
+
+
+
+input[type=submit] {
+    padding: 0.5em 1em;
+    margin-top: 0.5em;
+    display: inline;
+}
+
+input[type=checkbox]{
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+
+}
+input[type=text]{
+    margin-bottom: 0.5em;
+    width: 70%;
+
+}
+input[type=email]{
+    margin-bottom: 0.5em;
+    width: 70%;
+
+}
+input[type=firstName]{
+    margin-bottom: 0.5em;
+    width: 70%;
+
+}
+input[type=url]{
+    margin-bottom: 0.5em;
+    width: 70%;
+}
+input[type=lastName]{
+    margin-bottom: 0.5em;
+    width: 70%;
+
+}
+input[type=reset]{
+    display: inline;
+    padding: 0.5em 1em;
+    margin-top:0.5em;
+}
+
+input[name="keyw"]{
+    margin-bottom: 0.5em;
+    width: 70%;
+}
 
 .articles{
   position: fixed;
@@ -158,7 +245,12 @@ bottom: 0; /* Position the navbar at the bottom of the page */
   display: block;
   text-align: center;
 }
-
+.links_goBack{
+    font-family: 'VT323', monospace;
+    text-decoration: none;
+    padding: 2em;
+    display: block;
+}
 .loader{
   position: fixed;
   z-index: 99;
@@ -279,4 +371,20 @@ bottom: 0; /* Position the navbar at the bottom of the page */
     visibility: hidden;
   }
 
+}
+
+.error {
+    position: relative;
+    animation: shake .1s linear;
+    animation-iteration-count: 3;
+    border: 2px solid red;
+}
+
+@keyframes shake {
+    0% {
+        left: -5px;
+    }
+    100% {
+        right: -5px;
+    }
 }

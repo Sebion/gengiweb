@@ -38,15 +38,155 @@
 
     </script>
 </div>
-<p class="par">Vitaj na stranke 3</p>
-<a class="links" href="index.html">Home page</a>
 
+<a class="links_goBack" href="index.html">&lt;&lt; return </a>
+<div class="form">
+    <form id="opnFrm">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-<img style="height: 30px; width: 300px; position: fixed;
-  bottom: 5px;
-  right: 5px;" src="fig/gengifinal.gif" alt="gif">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email address..">
+
+        <label for="url">Image URL:</label>
+        <input type="url" id="url" name="url" placeholder="Image URL..">
+
+        <label for="keyw">Keyword:</label>
+
+        <input list="keywords" name="keyw" id="keyw">
+        <datalist id="keywords">
+            <option value="neviem">
+            <option value="hej">
+            <option value="asi">
+            <option value="moze">
+            <option value="byt">
+        </datalist>
+        <div class="radio">
+            <input type="radio" id="male" name="sex" value="Male" checked>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="sex" value="Female">
+            <label for="female">Female</label>
+        </div>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" cols="40"></textarea>
+
+        <div class="checkbox">
+            <input type="checkbox" id="sub" name="sub">
+            <label>Subscribe to newsletter. </label>
+        </div>
+        <button type="button" id="submitBtn" onclick="validate()">Submit</button>
+        <!-- <input type="submit" value="Submit"> -->
+        <input type="reset" value="Reset">
+
+    </form>
+</div>
+<div id="opinionsContainer">
+
+</div>
 <footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a href = "mailto:hreskosebastian@gmail.com">Sebastian Hresko</a>.</footer>
+
+<script>
+    function validateEmail(email)
+    {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+    let opinions=[];
+
+    if(localStorage.myTreesComments){
+        opinions=JSON.parse(localStorage.myTreesComments);
+    }
+
+    console.log(opinions);
+
+    function validate() {
+        var fname = document.getElementById('fname');
+        var lname = document.getElementById('lname');
+        var email = document.getElementById('email');
+        var keyw = document.getElementById('keyw');
+        var message = document.getElementById('message');
+
+        if (!fname.value) {
+            fname.classList.add('error');
+            setTimeout(function() {
+                fname.classList.remove('error');
+            }, 300);
+        }
+        if(!lname.value) {
+            lname.classList.add('error');
+            setTimeout(function() {
+                lname.classList.remove('error');
+            }, 300);
+        }
+        if(message.value.trim()=='') {
+            message.classList.add('error');
+            setTimeout(function() {
+                message.classList.remove('error');
+            }, 300);
+        }
+
+        if(!validateEmail(email.value)){
+            email.classList.add('error');
+            setTimeout(function() {
+                email.classList.remove('error');
+            }, 300);
+        }
+
+
+        else {
+            const nopName = document.getElementById("fname").value.trim();
+            const nopLName = document.getElementById("lname").value.trim();
+            const nopEmail = document.getElementById("email").value.trim();
+            const nopKeyword = document.getElementById("keyw").value.trim();
+            const nopOpn = document.getElementById("message").value.trim();
+            var nopSex = "";
+
+            if(document.getElementById("male").checked == true) {
+                nopSex = document.getElementById("male").value.trim();
+            } else {
+                nopSex = document.getElementById("female").value.trim();
+
+            }
+            const nopSubscribe = document.getElementById("sub").checked;
+            const newOpinion =
+                {
+                    firstName: nopName,
+                    lastName: nopLName,
+                    email: nopEmail,
+                    keyword: nopKeyword,
+                    sex: nopSex,
+                    message: nopOpn,
+                    subscribe: nopSubscribe,
+                    created: new Date()
+                };
+
+            console.log("New opinion:\n "+JSON.stringify(newOpinion));
+
+            opinions.push(newOpinion);
+
+            localStorage.myTreesComments = JSON.stringify(opinions);
+
+
+
+            window.alert("Your opinion has been stored. Look to the console");
+            console.log("New opinion added");
+            console.log(opinions);
+            const myFrmElm=document.getElementById("opnFrm");
+            //5. Reset the form
+            myFrmElm.reset();
+
+
+        }
+    }
+</script>
+
 
 </body>
 
+
+
 </html>
+
