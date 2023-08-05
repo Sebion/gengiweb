@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>gengi</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/screenStyle.css">
-    <link rel="stylesheet" href="css/printStyle.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-
-
+<title>gengi</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/screenStyle.css">
+<link rel="stylesheet" href="css/printStyle.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
 <div style="display: flex; justify-content: space-between;">
-    <p id="size"></p>
+  <p id="size"></p>
 
-    <script>
+  <script>
 
-        var size = document.getElementById("size");
-        go();
-        window.addEventListener('resize', go);
+    var x = document.getElementById("size");
+    go();
+    window.addEventListener('resize', go);
 
-        function go() {
-            var w = document.documentElement.clientWidth;
-            var h = document.documentElement.clientHeight;
-            size.innerHTML = w + "px x " + h + "px";
-        }
-    </script>
+    function go() {
+      var w = document.documentElement.clientWidth;
+      var h = document.documentElement.clientHeight;
+      x.innerHTML = w + "px x " + h + "px";
+    }
+  </script>
 
-    <p id="time"></p>
+  <p id="time"></p>
 
-    <script>
-        document.getElementById('time').innerHTML = Date();
-        setInterval(function () {
-            document.getElementById('time').innerHTML = Date();
-        }, 1000);
+  <script>
+    document.getElementById('time').innerHTML = Date();
+    setInterval(function () {
+      document.getElementById('time').innerHTML = Date();
+    }, 1000);
 
-    </script>
+  </script>
 </div>
 <div id="screensaver"
      style="position: absolute; height: 100vh;
@@ -142,27 +138,42 @@
     window.requestAnimationFrame(animate);
 
 </script>
-<div class="articles">
-    <img src="fig/tvfinal.gif" alt="">
-    <div class="articles_in">
-        <p data-title="Shop"><a class="links_tv" href="shop.html">Shop</a></p>
-        <p data-title="Lookbook"><a class="links_tv" href="lookbook.html">Lookbook</a></p>
-        <p data-title="About us"><a class="links_tv" href="form.html">About us</a></p>
-        <br>
-        <br>
+  <div class="loader">
+    <p class="par" data-title="please wait for no reason...">please wait for no reason...</p>
+  </div>
+  <a class="links_goBack" href="index.html">&lt;&lt; return </a>
+
+  <header style="margin-top: 20px;">
+    <h3>Everything you need, to be part of gengi</h3>
+    <h4>is right here.</h4>
+
+  </header>
+
+  <!-- <nav>
+    <a class="links" href="index.html">&lt;&lt; return</a>
+  </nav> -->
 
 
-    </div>
-</div>
-<!--<img style="height: 100px; width: 1000px; position: fixed;-->
-<!--  bottom: 5px;-->
-<!--  right: 5px;" src="fig/gengifinal.gif" alt="gif">-->
+<img
+id="scaleble"
+sizes="(max-width: 3500px) 40vw, 1400px"
+srcset="
+fig/donda-philey-sanneh_i0kpdy_c_scale,w_833.jpg 833w,
+fig/donda-philey-sanneh_i0kpdy_c_scale,w_1142.jpg 1142w,
+fig/donda-philey-sanneh_i0kpdy_c_scale,w_1305.jpg 1305w,
+fig/donda-philey-sanneh_i0kpdy_c_scale,w_1400.jpg 1400w"
+src="fig/donda-philey-sanneh_i0kpdy_c_scale,w_1400.jpg"
+alt="">
+
+<main>
+
+</main>
+
 <img style="height: 30px; width: 300px; position: fixed;
   bottom: 5px;
   right: 5px;" src="fig/gengifinal.gif" alt="gif">
-<footer>© 2023 gengi™. All rights reserved. Privacy Policy. Created by - <a href="mailto:hreskosebastian@gmail.com">Sebastian
-    Hresko</a>.
-</footer>
+<footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a id="footlink" href = "mailto:hreskosebastian@gmail.com">Sebastian Hresko</a>.</footer>
+
 </body>
 
 </html>
