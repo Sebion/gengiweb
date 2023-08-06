@@ -3,6 +3,8 @@
 margin: 0;
 padding: 0;
 cursor: crosshair;
+font-family: 'VT323', monospace;
+
 }
 body{
     margin: 0;
@@ -11,7 +13,6 @@ body{
 
 h1{
   text-align: center;
-
   font-family: arial;
   font-size: 3em;
   margin-top: 0.3em;
@@ -19,14 +20,13 @@ h1{
 
 }
 h3{
+  margin-top: 3em;
   text-align: center;
-
   font-family: 'VT323', monospace;
 
 }
 h4{
   text-align: center;
-
   font-family: 'VT323', monospace;
   margin-top: 0;
 }
@@ -39,8 +39,8 @@ table {
   margin-bottom: 2em;
   border: 1px solid black;
   margin-left: auto;
- margin-right: auto;
- margin-bottom: 2em;
+  margin-right: auto;
+  margin-bottom: 2em;
 }
 td{
   text-align: center;
@@ -230,7 +230,7 @@ input[name="keyw"]{
   color: #2fff00;
 }
 .links:hover{
-  color: #ff0000;
+  color: #2fff00;
 }
 
 
@@ -248,8 +248,15 @@ input[name="keyw"]{
 .links_goBack{
     font-family: 'VT323', monospace;
     text-decoration: none;
-    padding: 2em;
-    display: block;
+    margin: 2em;
+    position: absolute;
+
+    /* display: block; */
+}
+
+.links_goBack:hover{
+  color: #2fff00;
+
 }
 .loader{
   position: fixed;
@@ -387,4 +394,132 @@ input[name="keyw"]{
     100% {
         right: -5px;
     }
+}
+
+.body-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  margin: 0;
+}
+.item-picker {
+  text-align: center;
+}
+
+.item-container {
+  margin-top: 50px;
+  text-align: center;
+ 
+}
+.item {
+  max-width: 600px; /* Adjust as per your image dimensions */
+  max-height: 500px; /* Adjust as per your image dimensions */
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+.size-picker {
+  margin-top: 30px;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  color: #551a8b;
+
+}
+.nav-btn:hover{
+  color: #2fff00;
+}
+
+#buy-btn{
+  margin: 2em;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  color: #551a8b;
+  text-decoration: underline;
+}
+#buy-btn:hover{
+  color: #2fff00;
+
+}
+
+#prev-btn {
+  left: 10%;
+}
+
+#next-btn {
+  right: 10%;
+}
+
+.item-title{
+  font-size: 20px;
+  color: #2fff00;
+
+}
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 999; /* Make sure the overlay is above other elements */
+}
+
+/* Styling for the modal container */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 60px;
+}
+#okBtn{
+  font-size: 16px;
+
+}
+
+#cancelBtn{
+  font-size: 16px;
+
+}
+.info-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 10px;
+  color: grey; /* Blue color (you can change it to your preferred color) */
+  cursor: pointer;
+}
+
+/* Styling for the tooltip */
+.tooltip {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  padding: 5px;
+  background-color: red; /* Blue color (you can change it to your preferred color) */
+  color: #fff;
+}
+#inputField:focus{
+border: #551a8b;
+}
+
+
+/* Styling for the green border animation */
+.green-border {
+  border: 2px solid #2fff00;
 }

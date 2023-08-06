@@ -49,7 +49,7 @@
     $(document).ready(function () {
         var mousetimeout;
         var screensaver_active = false;
-        var idletime = 30;
+        var idletime = 60;
 
         function show_screensaver() {
             $('#screensaver').fadeIn();
@@ -149,30 +149,130 @@
 
   </header>
 
-  <!-- <nav>
-    <a class="links" href="index.html">&lt;&lt; return</a>
-  </nav> -->
+  <div class="body-wrapper">
+  <div class="item-picker">
+    <div class="item-container">
+      <button id="prev-btn" class="nav-btn" onclick="changeItem(-1)">&lt;&lt;</button>
+      <div class="item-title">Item 1</div>
+      <img src="fig/1.png" alt="Item 1" class="item">
+      <button id="next-btn" class="nav-btn" onclick="changeItem(1)">&gt;&gt;</button>
+    </div>
+    <p class="item-price">29,90$</p>
+    <div class="size-picker">
+      <label for="size">Size:</label>
+      <select id="size" onchange="updateSize()">
+        <option value="small">Small (S)</option>
+        <option value="medium">Medium (M)</option>
+        <option value="large">Large (L)</option>
+        <option value="large">Extra large (XL)</option>
+      </select>
+    </div>
+    <button id="buy-btn">&lt; Buy this item &gt;</button>
+  </div>
+</div>
+<div class="overlay" id="overlay">
+  <!-- Modal container -->
+  <div class="modal">
+    <label for="input">Enter purchase key: </label>
+    <input type="text" id="inputField" style="width: 100%;" />
+    <button id="okBtn">Ok</button>
+    <button id="cancelBtn">Cancel</button>
+    <i class="fas fa-info-circle info-icon" id="infoIcon">info</i>
+    <div class="tooltip" id="tooltip">You can obtain this key from our posters or various other sources.</div>
+  </div>
+</div>
+<script>
+  // JavaScript to handle the info icon tooltip
+  document.getElementById('infoIcon').addEventListener('mouseover', function() {
+    document.getElementById('tooltip').style.display = 'block';
+  });
+
+  document.getElementById('infoIcon').addEventListener('mouseout', function() {
+    document.getElementById('tooltip').style.display = 'none';
+  });
+</script>
+<script>
+  // JavaScript to handle the button click and show the overlay
+  document.getElementById('buy-btn').addEventListener('click', function() {
+    document.getElementById('overlay').style.display = 'block';
+  });
+
+  // JavaScript to handle the OK and Cancel buttons
+  document.getElementById('okBtn').addEventListener('click', function() {
+      var inputFieldValue = document.getElementById('inputField').value;
+      var expectedValue = 'pes'; // Replace with the expected value
+
+      if (inputFieldValue === expectedValue) {
+        // Input value matches expected value, do something here (e.g., closeOverlay())
+        console.log('Input value:', inputFieldValue);
+        document.getElementById('inputField').classList.add('green-border');
+        // Remove the green-border class after the animation ends
+       
+          // Redirect the user to another page after one second
+          setTimeout(function() {
+            document.getElementById('inputField').classList.remove('green-border');
+            // closeOverlay();
+            window.location.href = 'form.html'; // Replace with the desired page URL
+          }, 1000);
+        
+      } else {
+        // Input value does not match expected value, show shake animation
+        document.getElementById('inputField').classList.add('error');
+        // Remove the shake class after the animation ends
+        document.getElementById('inputField').addEventListener('animationend', function() {
+        document.getElementById('inputField').classList.remove('error');
+        });
+      }
+    });
+
+  document.getElementById('cancelBtn').addEventListener('click', function() {
+    closeOverlay();
+  });
+
+  // Function to close the overlay
+  function closeOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+  }
+</script>
+  <script>
+    let currentItem = 0;
+const items = ["fig/ezgif.com-gif-maker.gif", "fig/whitet.gif", "fig/lego-spinning.gif"]; // Add the names of your image files here
+const itemsTitles = ["T-shirt-Black", "T-shirt-White", "Wax"]; // Add the names of your image files here
+const itemsPrices = ["29,90$", "29,90$", "9,90$"]; // Add the names of your image files here
 
 
-<img
-id="scaleble"
-sizes="(max-width: 3500px) 40vw, 1400px"
-srcset="
-fig/donda-philey-sanneh_i0kpdy_c_scale,w_833.jpg 833w,
-fig/donda-philey-sanneh_i0kpdy_c_scale,w_1142.jpg 1142w,
-fig/donda-philey-sanneh_i0kpdy_c_scale,w_1305.jpg 1305w,
-fig/donda-philey-sanneh_i0kpdy_c_scale,w_1400.jpg 1400w"
-src="fig/donda-philey-sanneh_i0kpdy_c_scale,w_1400.jpg"
-alt="">
+function changeItem(step) {
+  currentItem += step;
+  if (currentItem < 0) {
+    currentItem = items.length - 1;
+  } else if (currentItem >= items.length) {
+    currentItem = 0;
+  }
 
-<main>
+  const itemImage = document.querySelector(".item");
+  itemImage.src = items[currentItem];
+  const itemTitle = document.querySelector(".item-title");
+  itemTitle.innerHTML = itemsTitles[currentItem];
+  const itemPrice = document.querySelector(".item-price");
+  itemPrice.innerHTML = itemsPrices[currentItem];
 
-</main>
+}
+
+function updateSize() {
+  const selectedSize = document.getElementById("size").value;
+  // Perform actions based on the selected size if needed
+  console.log("Selected Size:", selectedSize);
+}
+
+// Initialize the item picker with the first item
+changeItem(0);
+
+  </script>
 
 <img style="height: 30px; width: 300px; position: fixed;
   bottom: 5px;
   right: 5px;" src="fig/gengifinal.gif" alt="gif">
-<footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a id="footlink" href = "mailto:hreskosebastian@gmail.com">Sebastian Hresko</a>.</footer>
+<footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a id="footlink" href = "mailto:gengibrand@gmail.com">Sebastian Hresko</a>.</footer>
 
 </body>
 

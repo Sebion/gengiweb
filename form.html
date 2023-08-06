@@ -51,7 +51,7 @@
     $(document).ready(function () {
         var mousetimeout;
         var screensaver_active = false;
-        var idletime = 30;
+        var idletime = 60;
 
         function show_screensaver() {
             $('#screensaver').fadeIn();
@@ -140,7 +140,6 @@
     window.requestAnimationFrame(animate);
 
 </script>
-<a class="links_goBack" href="index.html">&lt;&lt; return </a>
 <div class="form">
     <form id="opnFrm">
         <label for="fname">First Name:</label>
@@ -151,28 +150,34 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" placeholder="Your email address..">
 
-        <label for="url">Image URL:</label>
-        <input type="url" id="url" name="url" placeholder="Image URL..">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" placeholder="City:">
 
-        <label for="keyw">Keyword:</label>
+        <label for="street">Street:</label>
+        <input type="text" id="street" name="street" placeholder="Street:">
 
-        <input list="keywords" name="keyw" id="keyw">
+        <label for="postal">Postal code:</label>
+        <input type="number" id="postal" name="postal" placeholder="Postal code:" style="width: 50%;">
+
+        <!-- <label for="keyw">Keyword:</label> -->
+
+        <!-- <input list="keywords" name="keyw" id="keyw">
         <datalist id="keywords">
             <option value="neviem">
             <option value="hej">
             <option value="asi">
             <option value="moze">
             <option value="byt">
-        </datalist>
-        <div class="radio">
+        </datalist> -->
+        <!-- <div class="radio">
             <input type="radio" id="male" name="sex" value="Male" checked>
             <label for="male">Male</label>
             <input type="radio" id="female" name="sex" value="Female">
             <label for="female">Female</label>
-        </div>
+        </div> -->
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="6" cols="40"></textarea>
+        <!-- <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" cols="40"></textarea> -->
 
         <div class="checkbox">
             <input type="checkbox" id="sub" name="sub">
@@ -184,32 +189,68 @@
 
     </form>
 </div>
-
+<a class="links_goBack" href="index.html">&lt;&lt; return </a>
+<div class="overlay" id="overlay">
+    <!-- Modal container -->
+    <div class="modal" style="text-align: center;">
+      <label for="okBtn">Congratulations ! <br> You have just purchased this item: T-Shirt-White<br>You will recieve your confirmation email soon..</label>
+      <!-- <input type="text" id="inputField" /> -->
+      <button id="okBtn" style="margin-top: 25px;">Go back</button>
+      
+    </div>
+  </div>
 <img style="height: 30px; width: 300px; position: fixed;
   bottom: 5px;
   right: 5px;" src="fig/gengifinal.gif" alt="gif">
-<footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a href = "mailto:hreskosebastian@gmail.com">Sebastian Hresko</a>.</footer>
-
+<footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a href = "mailto:gengibrand@gmail.com">Sebastian Hresko</a>.</footer>
 <script>
+    // JavaScript to handle the button click and show the overlay
+    // document.getElementById('submitBtn').addEventListener('click', function() {
+    //   document.getElementById('overlay').style.display = 'block';
+    // });
+
+    // JavaScript to handle the OK and Cancel buttons
+    document.getElementById('okBtn').addEventListener('click', function() {
+      closeOverlay();
+      window.location.href = 'index.html'; // Replace with the desired page URL
+
+    });
+
+    // Function to close the overlay
+    function closeOverlay() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+<script>
+
+let opinions=[];
+
+if(localStorage.myTreesComments){
+    opinions=JSON.parse(localStorage.myTreesComments);
+}
+
+console.log(opinions);
     function validateEmail(email)
     {
         var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
     }
-    let opinions=[];
 
-    if(localStorage.myTreesComments){
-        opinions=JSON.parse(localStorage.myTreesComments);
+    function validatePostal(postal)
+    {
+        var re = /\d\d\d\d\d/i;
+        return re.test(postal);
     }
-
-    console.log(opinions);
+    
 
     function validate() {
         var fname = document.getElementById('fname');
         var lname = document.getElementById('lname');
         var email = document.getElementById('email');
-        var keyw = document.getElementById('keyw');
-        var message = document.getElementById('message');
+        var city = document.getElementById('city');
+        var street = document.getElementById('street');
+        var postal = document.getElementById('postal');
+
 
         if (!fname.value) {
             fname.classList.add('error');
@@ -223,13 +264,23 @@
                 lname.classList.remove('error');
             }, 300);
         }
-        if(message.value.trim()=='') {
-            message.classList.add('error');
+        if(!city.value) {
+            city.classList.add('error');
             setTimeout(function() {
-                message.classList.remove('error');
+                city.classList.remove('error');
             }, 300);
         }
-
+        if(!street.value) {
+            street.classList.add('error');
+            setTimeout(function() {
+                street.classList.remove('error');
+            }, 300);
+        }if(!validatePostal(postal.value)) {
+            postal.classList.add('error');
+            setTimeout(function() {
+                postal.classList.remove('error');
+            }, 300);
+        }
         if(!validateEmail(email.value)){
             email.classList.add('error');
             setTimeout(function() {
@@ -242,25 +293,19 @@
             const nopName = document.getElementById("fname").value.trim();
             const nopLName = document.getElementById("lname").value.trim();
             const nopEmail = document.getElementById("email").value.trim();
-            const nopKeyword = document.getElementById("keyw").value.trim();
-            const nopOpn = document.getElementById("message").value.trim();
-            var nopSex = "";
+            const nopCity = document.getElementById("city").value.trim();
+            const nopStreet = document.getElementById("street").value.trim();
+            const nopPostal= document.getElementById("postal").value.trim();
 
-            if(document.getElementById("male").checked == true) {
-                nopSex = document.getElementById("male").value.trim();
-            } else {
-                nopSex = document.getElementById("female").value.trim();
-
-            }
             const nopSubscribe = document.getElementById("sub").checked;
             const newOpinion =
                 {
                     firstName: nopName,
                     lastName: nopLName,
                     email: nopEmail,
-                    keyword: nopKeyword,
-                    sex: nopSex,
-                    message: nopOpn,
+                    city: nopCity,
+                    street: nopStreet,
+                    postal: nopPostal,
                     subscribe: nopSubscribe,
                     created: new Date()
                 };
@@ -272,8 +317,8 @@
             localStorage.myTreesComments = JSON.stringify(opinions);
 
 
-
-            window.alert("Your opinion has been stored. Look to the console");
+            document.getElementById('overlay').style.display = 'block';
+            // window.alert("Your opinion has been stored. Look to the console");
             console.log("New opinion added");
             console.log(opinions);
             const myFrmElm=document.getElementById("opnFrm");
