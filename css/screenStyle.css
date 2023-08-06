@@ -400,7 +400,7 @@ input[name="keyw"]{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75vh;
+  height: 90vh;
   margin: 0;
 }
 .item-picker {
