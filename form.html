@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Article3</title>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="css/screenStyle.css">
+<link rel="stylesheet" href="css/printStyle.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div style="display: flex; justify-content: space-between;">
+    <p id="size"></p>
+
+    <script>
+
+        var x = document.getElementById("size");
+        go();
+        window.addEventListener('resize', go);
+
+        function go() {
+            var w = document.documentElement.clientWidth;
+            var h = document.documentElement.clientHeight;
+            x.innerHTML = w + "px x " + h + "px";
+        }
+    </script>
+
+    <p id="time"></p>
+
+    <script>
+        document.getElementById('time').innerHTML = Date();
+        setInterval(function () {
+            document.getElementById('time').innerHTML = Date();
+        }, 1000);
+
+    </script>
+</div>
+<div id="screensaver"
+     style="position: absolute; height: 100vh;
+  width: 100vw; left:0px; top: 0px; display: none; z-index:9999; background-color:black;">
+    <img id="dvd" style="height: 80px; width: 600px; position: absolute;
+  left: 0px;
+  top: 0px;" src="fig/gengiinverted.gif" alt="gif">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var mousetimeout;
+        var screensaver_active = false;
+        var idletime = 60;
+
+        function show_screensaver() {
+            $('#screensaver').fadeIn();
+            screensaver_active = true;
+            screensaver_animation();
+        }
+
+        function stop_screensaver() {
+            $('#screensaver').fadeOut();
+            screensaver_active = false;
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.round(Math.random() * 15)];
+            }
+            return color;
+        }
+
+        // $(document).click(function () {
+        //     clearTimeout(mousetimeout);
+        //
+        //     if (screensaver_active) {
+        //         stop_screensaver();
+        //     }
+        //
+        //     mousetimeout = setTimeout(function () {
+        //         show_screensaver();
+        //     }, 500 * idletime); // 5 secs
+        // });
+
+        $(document).mousemove(function () {
+            clearTimeout(mousetimeout);
+
+            if (screensaver_active) {
+                stop_screensaver();
+            }
+            mousetimeout = setTimeout(function () {
+                show_screensaver();
+            }, 1000 * idletime); // 5 secs
+        });
+
+        function screensaver_animation() {
+            if (screensaver_active) {
+                $('#screensaver').animate(
+                    {backgroundColor: getRandomColor()},
+                    400,
+                    screensaver_animation);
+            }
+        }
+    });
+</script>
+
+<script>
+    var x = 0,
+        y = 0,
+        dirX = 1,
+        dirY = 1;
+    const speed = 2;
+    let dvd = document.getElementById("dvd");
+    let screensaver = document.getElementById("screensaver");
+    const dvdWidth = dvd.clientWidth;
+    const dvdHeight = dvd.clientHeight;
+
+    function animate() {
+        const screenHeight = screensaver.clientHeight;
+        const screenWidth = screensaver.clientWidth;
+
+        if (y + dvdHeight +60 >= screenHeight || y < 0) {
+            dirY *= -1;
+
+        }
+        if (x + dvdWidth + 600>= screenWidth || x < 0) {
+            dirX *= -1;
+
+        }
+        x += dirX * speed;
+        y += dirY * speed;
+        dvd.style.left = x + "px";
+        dvd.style.top = y + "px";
+        window.requestAnimationFrame(animate);
+    }
+
+    window.requestAnimationFrame(animate);
+
+</script>
+<div class="form">
+    <form id="opnFrm">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email address..">
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" placeholder="City:">
+
+        <label for="street">Street:</label>
+        <input type="text" id="street" name="street" placeholder="Street:">
+
+        <label for="postal">Postal code:</label>
+        <input type="number" id="postal" name="postal" placeholder="Postal code:" style="width: 50%;">
+
+        <!-- <label for="keyw">Keyword:</label> -->
+
+        <!-- <input list="keywords" name="keyw" id="keyw">
+        <datalist id="keywords">
+            <option value="neviem">
+            <option value="hej">
+            <option value="asi">
+            <option value="moze">
+            <option value="byt">
+        </datalist> -->
+        <!-- <div class="radio">
+            <input type="radio" id="male" name="sex" value="Male" checked>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="sex" value="Female">
+            <label for="female">Female</label>
+        </div> -->
+
+        <!-- <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" cols="40"></textarea> -->
+
+        <div class="checkbox">
+            <input type="checkbox" id="sub" name="sub">
+            <label>Subscribe to newsletter. </label>
+        </div>
+        <button type="button" id="submitBtn" onclick="validate()">Submit</button>
+        <!-- <input type="submit" value="Submit"> -->
+        <input type="reset" value="Reset">
+
+    </form>
+</div>
+<a class="links_goBack" href="index.html">&lt;&lt; return </a>
+<div class="overlay" id="overlay">
+    <!-- Modal container -->
+    <div class="modal" style="text-align: center;">
+      <label for="okBtn">Congratulations !<br>You have just purchased this item: T-Shirt-White<br><br>You will recieve your confirmation email soon..<br></label>
+      <!-- <input type="text" id="inputField" /> -->
+      <button id="okBtn" style="margin-top: 25px;">Go back</button>
+
+    </div>
+  </div>
+<img style="height: 30px; width: 300px; position: fixed;
+  bottom: 5px;
+  right: 5px;" src="fig/gengifinal.gif" alt="gif">
+<footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a href = "mailto:gengibrand@gmail.com">Sebastian Hresko</a>.</footer>
+<script>
+    // JavaScript to handle the button click and show the overlay
+    // document.getElementById('submitBtn').addEventListener('click', function() {
+    //   document.getElementById('overlay').style.display = 'block';
+    // });
+
+    // JavaScript to handle the OK and Cancel buttons
+    document.getElementById('okBtn').addEventListener('click', function() {
+      closeOverlay();
+      window.location.href = 'index.html'; // Replace with the desired page URL
+
+    });
+
+    // Function to close the overlay
+    function closeOverlay() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+<script>
+
+let opinions=[];
+
+if(localStorage.myTreesComments){
+    opinions=JSON.parse(localStorage.myTreesComments);
+}
+
+console.log(opinions);
+    function validateEmail(email)
+    {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function validatePostal(postal)
+    {
+        var re = /\d\d\d\d\d/i;
+        return re.test(postal);
+    }
+
+
+    function validate() {
+        var fname = document.getElementById('fname');
+        var lname = document.getElementById('lname');
+        var email = document.getElementById('email');
+        var city = document.getElementById('city');
+        var street = document.getElementById('street');
+        var postal = document.getElementById('postal');
+
+
+        if (!fname.value) {
+            fname.classList.add('error');
+            setTimeout(function() {
+                fname.classList.remove('error');
+            }, 300);
+        }
+        if(!lname.value) {
+            lname.classList.add('error');
+            setTimeout(function() {
+                lname.classList.remove('error');
+            }, 300);
+        }
+        if(!city.value) {
+            city.classList.add('error');
+            setTimeout(function() {
+                city.classList.remove('error');
+            }, 300);
+        }
+        if(!street.value) {
+            street.classList.add('error');
+            setTimeout(function() {
+                street.classList.remove('error');
+            }, 300);
+        }if(!validatePostal(postal.value)) {
+            postal.classList.add('error');
+            setTimeout(function() {
+                postal.classList.remove('error');
+            }, 300);
+        }
+        if(!validateEmail(email.value)){
+            email.classList.add('error');
+            setTimeout(function() {
+                email.classList.remove('error');
+            }, 300);
+        }
+
+
+        else {
+            const nopName = document.getElementById("fname").value.trim();
+            const nopLName = document.getElementById("lname").value.trim();
+            const nopEmail = document.getElementById("email").value.trim();
+            const nopCity = document.getElementById("city").value.trim();
+            const nopStreet = document.getElementById("street").value.trim();
+            const nopPostal= document.getElementById("postal").value.trim();
+
+            const nopSubscribe = document.getElementById("sub").checked;
+            const newOpinion =
+                {
+                    firstName: nopName,
+                    lastName: nopLName,
+                    email: nopEmail,
+                    city: nopCity,
+                    street: nopStreet,
+                    postal: nopPostal,
+                    subscribe: nopSubscribe,
+                    created: new Date()
+                };
+
+            console.log("New opinion:\n "+JSON.stringify(newOpinion));
+
+            opinions.push(newOpinion);
+
+            localStorage.myTreesComments = JSON.stringify(opinions);
+
+
+            document.getElementById('overlay').style.display = 'block';
+            // window.alert("Your opinion has been stored. Look to the console");
+            console.log("New opinion added");
+            console.log(opinions);
+            const myFrmElm=document.getElementById("opnFrm");
+            //5. Reset the form
+            myFrmElm.reset();
+
+
+        }
+    }
+</script>
+
+
+</body>
+
+
+
+</html>
