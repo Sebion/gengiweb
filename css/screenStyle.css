@@ -494,6 +494,14 @@ input[name="keyw"]{
 #cancelBtn{
   font-size: 16px;
 
+}#yesBtn{
+  font-size: 16px;
+
+}
+
+#goBackBtn{
+  font-size: 16px;
+
 }
 .info-icon {
   position: absolute;
