@@ -150,6 +150,9 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Your email address..">
 
+            <label for="phone">Phone number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="+421012345678">
+
             <label for="city">City:</label>
             <input type="text" id="city" name="city" placeholder="City:">
 
@@ -206,9 +209,7 @@
             <label for="yesBtn">Are you sure you want to purchase this item ?<br>T-Shirt-White - XL<br></label>
             <!-- <input type="text" id="inputField" /> -->
             <button id="yesBtn" style="margin-top: 25px;">Yes</button>
-            <button id="goBackBtn" style="margin-top: 25px;">Go back</button>
-
-
+            <button id="goBackBtn" style="margin-top: 25px;">No</button>
         </div>
     </div>
     <img style="height: 30px; width: 300px; position: fixed;
@@ -249,9 +250,9 @@
 
         document.getElementById('goBackBtn').addEventListener('click', function () {
             closeOverlay2();
-            window.location.href = 'index.html'; // Replace with the desired page URL
-
+            // window.location.href = 'index.html'; // Replace with the desired page URL
         });
+
         // Function to close the overlay
         function closeOverlay1() {
             document.getElementById('overlay1').style.display = 'none';
@@ -262,18 +263,21 @@
     </script>
     <script>
 
-        let opinions = [];
+        // let opinions = [];
 
-        if (localStorage.myTreesComments) {
-            opinions = JSON.parse(localStorage.myTreesComments);
-        }
+        // if (localStorage.myTreesComments) {
+        //     opinions = JSON.parse(localStorage.myTreesComments);
+        // }
 
-        console.log(opinions);
+        // console.log(opinions);
         function validateEmail(email) {
             var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
-
+        function validatePhone(phone) {
+            var re = /\+[0-9]+/i;
+            return re.test(phone);
+        }
         function validatePostal(postal) {
             var re = /\d\d\d\d\d/i;
             return re.test(postal);
@@ -284,52 +288,76 @@
             var fname = document.getElementById('fname');
             var lname = document.getElementById('lname');
             var email = document.getElementById('email');
+            var phone = document.getElementById('phone');
             var city = document.getElementById('city');
             var street = document.getElementById('street');
             var postal = document.getElementById('postal');
 
 
+            var isOk = true;
+                
             if (!fname.value) {
                 fname.classList.add('error');
                 setTimeout(function () {
                     fname.classList.remove('error');
                 }, 300);
+                isOk=false;
             }
             if (!lname.value) {
                 lname.classList.add('error');
                 setTimeout(function () {
                     lname.classList.remove('error');
                 }, 300);
+                isOk=false;
+
             }
             if (!city.value) {
                 city.classList.add('error');
                 setTimeout(function () {
                     city.classList.remove('error');
                 }, 300);
+                isOk=false;
+
+            }
+            if (!validatePhone(phone.value)) {
+                phone.classList.add('error');
+                setTimeout(function () {
+                    phone.classList.remove('error');
+                }, 300);
+                isOk=false;
+
             }
             if (!street.value) {
                 street.classList.add('error');
                 setTimeout(function () {
                     street.classList.remove('error');
                 }, 300);
-            } if (!validatePostal(postal.value)) {
+                isOk=false;
+
+            } 
+            if (!validatePostal(postal.value)) {
                 postal.classList.add('error');
                 setTimeout(function () {
                     postal.classList.remove('error');
                 }, 300);
+                isOk=false;
+
             }
             if (!validateEmail(email.value)) {
                 email.classList.add('error');
                 setTimeout(function () {
                     email.classList.remove('error');
                 }, 300);
+                isOk=false;
+
             }
-
-
-            else {
+            
+            
+            if (isOk) {
                 const nopName = document.getElementById("fname").value.trim();
                 const nopLName = document.getElementById("lname").value.trim();
                 const nopEmail = document.getElementById("email").value.trim();
+                const nopPhone = document.getElementById("phone").value.trim();
                 const nopCity = document.getElementById("city").value.trim();
                 const nopStreet = document.getElementById("street").value.trim();
                 const nopPostal = document.getElementById("postal").value.trim();
@@ -340,15 +368,13 @@
                     firstName: nopName,
                     lastName: nopLName,
                     email: nopEmail,
+                    phone: nopPhone,
                     city: nopCity,
                     street: nopStreet,
                     postal: nopPostal,
                     subscribe: nopSubscribe,
                     created: new Date()
                 };
-
-
-
 
                 document.getElementById('overlay2').style.display = 'block';
                 // console.log("New opinion:\n "+JSON.stringify(newOpinion));
@@ -364,8 +390,6 @@
                 // const myFrmElm=document.getElementById("opnFrm");
                 // //5. Reset the form
                 // myFrmElm.reset();
-
-
             }
         }
     </script>
