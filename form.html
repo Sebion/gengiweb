@@ -210,6 +210,8 @@
             <!-- <input type="text" id="inputField" /> -->
             <button id="yesBtn" style="margin-top: 25px;">Yes</button>
             <button id="goBackBtn" style="margin-top: 25px;">No</button>
+
+
         </div>
     </div>
     <img style="height: 30px; width: 300px; position: fixed;
@@ -218,6 +220,7 @@
     <footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a
             href="mailto:gengibrand@gmail.com">Sebastian Hresko</a>.</footer>
     <script>
+        var newOpinion;
         // JavaScript to handle the button click and show the overlay
         // document.getElementById('submitBtn').addEventListener('click', function() {
         //   document.getElementById('overlay').style.display = 'block';
@@ -230,16 +233,19 @@
 
         });
         document.getElementById('yesBtn').addEventListener('click', function () {
-            // console.log("New opinion:\n " + JSON.stringify(newOpinion));
+            
+            fetch('https://gengi.eu/order.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newOpinion)
+                })
+                .then(
+                    response => console.log(response.text())
+                    )
 
-            // opinions.push(newOpinion);
-
-            // localStorage.myTreesComments = JSON.stringify(opinions);
-
-            // window.alert("Your opinion has been stored. Look to the console");
-
-            // console.log("New opinion added");
-            // console.log(opinions);
             const myFrmElm = document.getElementById("opnFrm");
             //5. Reset the form
             myFrmElm.reset();
@@ -251,8 +257,8 @@
         document.getElementById('goBackBtn').addEventListener('click', function () {
             closeOverlay2();
             // window.location.href = 'index.html'; // Replace with the desired page URL
-        });
 
+        });
         // Function to close the overlay
         function closeOverlay1() {
             document.getElementById('overlay1').style.display = 'none';
@@ -263,21 +269,23 @@
     </script>
     <script>
 
-        // let opinions = [];
+        let opinions = [];
 
-        // if (localStorage.myTreesComments) {
-        //     opinions = JSON.parse(localStorage.myTreesComments);
-        // }
+        if (localStorage.myTreesComments) {
+            opinions = JSON.parse(localStorage.myTreesComments);
+        }
 
-        // console.log(opinions);
+        console.log(opinions);
         function validateEmail(email) {
             var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
+
         function validatePhone(phone) {
             var re = /\+[0-9]+/i;
             return re.test(phone);
         }
+
         function validatePostal(postal) {
             var re = /\d\d\d\d\d/i;
             return re.test(postal);
@@ -293,9 +301,9 @@
             var street = document.getElementById('street');
             var postal = document.getElementById('postal');
 
-
             var isOk = true;
-                
+
+
             if (!fname.value) {
                 fname.classList.add('error');
                 setTimeout(function () {
@@ -309,7 +317,6 @@
                     lname.classList.remove('error');
                 }, 300);
                 isOk=false;
-
             }
             if (!city.value) {
                 city.classList.add('error');
@@ -317,15 +324,6 @@
                     city.classList.remove('error');
                 }, 300);
                 isOk=false;
-
-            }
-            if (!validatePhone(phone.value)) {
-                phone.classList.add('error');
-                setTimeout(function () {
-                    phone.classList.remove('error');
-                }, 300);
-                isOk=false;
-
             }
             if (!street.value) {
                 street.classList.add('error');
@@ -333,15 +331,12 @@
                     street.classList.remove('error');
                 }, 300);
                 isOk=false;
-
-            } 
-            if (!validatePostal(postal.value)) {
+            } if (!validatePostal(postal.value)) {
                 postal.classList.add('error');
                 setTimeout(function () {
                     postal.classList.remove('error');
                 }, 300);
                 isOk=false;
-
             }
             if (!validateEmail(email.value)) {
                 email.classList.add('error');
@@ -349,11 +344,17 @@
                     email.classList.remove('error');
                 }, 300);
                 isOk=false;
-
             }
-            
-            
-            if (isOk) {
+            if (!validatePhone(phone.value)) {
+                phone.classList.add('error');
+                setTimeout(function () {
+                    phone.classList.remove('error');
+                }, 300);
+                isOk=false;
+            }
+
+
+            if(isOk) {
                 const nopName = document.getElementById("fname").value.trim();
                 const nopLName = document.getElementById("lname").value.trim();
                 const nopEmail = document.getElementById("email").value.trim();
@@ -362,19 +363,30 @@
                 const nopStreet = document.getElementById("street").value.trim();
                 const nopPostal = document.getElementById("postal").value.trim();
 
+                const urlParams = new URLSearchParams(window.location.search);
+                const code = urlParams.get('code');
+                const product = urlParams.get('product');
+                const size = urlParams.get('size');
+
+                console.log(code, product, size);
+
                 const nopSubscribe = document.getElementById("sub").checked;
-                const newOpinion =
+                newOpinion =
                 {
-                    firstName: nopName,
-                    lastName: nopLName,
-                    email: nopEmail,
-                    phone: nopPhone,
-                    city: nopCity,
-                    street: nopStreet,
-                    postal: nopPostal,
-                    subscribe: nopSubscribe,
-                    created: new Date()
+                    "firstName": nopName,
+                    "lastName": nopLName,
+                    "email": nopEmail,
+                    "phone": nopPhone,
+                    "city": nopCity,
+                    "street": nopStreet,
+                    "postal": nopPostal,
+                    "subscribe": nopSubscribe,
+                    "code": code,
+                    "product": product,
+                    "size": size,
+                    "created_at": new Date()
                 };
+
 
                 document.getElementById('overlay2').style.display = 'block';
                 // console.log("New opinion:\n "+JSON.stringify(newOpinion));
@@ -390,10 +402,11 @@
                 // const myFrmElm=document.getElementById("opnFrm");
                 // //5. Reset the form
                 // myFrmElm.reset();
+
+
             }
         }
     </script>
-
 
 </body>
 

@@ -159,12 +159,12 @@
     </div>
     <p class="item-price">29,90$</p>
     <div class="size-picker">
-      <label for="size">Size:</label>
-      <select id="size" onchange="updateSize()">
+      <label for="prod_size">Size:</label>
+      <select id="prod_size" onchange="updateSize()">
         <option value="small">Small (S)</option>
         <option value="medium">Medium (M)</option>
         <option value="large">Large (L)</option>
-        <option value="large">Extra large (XL)</option>
+        <option value="Xlarge">Extra large (XL)</option>
       </select>
     </div>
     <button id="buy-btn">&lt; Buy this item &gt;</button>
@@ -202,27 +202,37 @@
       var inputFieldValue = document.getElementById('inputField').value;
       var expectedValue = 'pes'; // Replace with the expected value
 
-      if (inputFieldValue === expectedValue) {
-        // Input value matches expected value, do something here (e.g., closeOverlay())
-        console.log('Input value:', inputFieldValue);
-        document.getElementById('inputField').classList.add('green-border');
-        // Remove the green-border class after the animation ends
+      const codeJson = { "code" : inputFieldValue }
+      fetch('https://gengi.eu/checkCodes.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(codeJson)
+                })
+                .then(response => console.log(response.text().then(function (text) {
+                  if(text == "lesgo") {
+                    // Input value matches expected value, do something here (e.g., closeOverlay())
+                    document.getElementById('inputField').classList.add('green-border');
+                    // Remove the green-border class after the animation ends
        
-          // Redirect the user to another page after one second
-          setTimeout(function() {
-            document.getElementById('inputField').classList.remove('green-border');
-            // closeOverlay();
-            window.location.href = 'form.html'; // Replace with the desired page URL
-          }, 1000);
-        
-      } else {
-        // Input value does not match expected value, show shake animation
-        document.getElementById('inputField').classList.add('error');
-        // Remove the shake class after the animation ends
-        document.getElementById('inputField').addEventListener('animationend', function() {
-        document.getElementById('inputField').classList.remove('error');
-        });
-      }
+                    // Redirect the user to another page after one second
+                    setTimeout(function() {
+                      document.getElementById('inputField').classList.remove('green-border');
+                      // closeOverlay();
+                      window.location.href = 'form.html?code='+inputFieldValue+'&product='+itemsTitles[currentItem]+'&size='+document.getElementById("prod_size").value; // Replace with the desired page URL
+                    }, 1000);
+                  }
+                  else{
+                    // Input value does not match expected value, show shake animation
+                    document.getElementById('inputField').classList.add('error');
+                    // Remove the shake class after the animation ends
+                    document.getElementById('inputField').addEventListener('animationend', function() {
+                      document.getElementById('inputField').classList.remove('error');
+                    });
+                  };
+})));
     });
 
   document.getElementById('cancelBtn').addEventListener('click', function() {
@@ -233,9 +243,8 @@
   function closeOverlay() {
     document.getElementById('overlay').style.display = 'none';
   }
-</script>
-  <script>
-    let currentItem = 0;
+
+  let currentItem = 0;
 const items = ["fig/ezgif.com-gif-maker.gif", "fig/whitet.gif", "fig/lego-spinning.gif"]; // Add the names of your image files here
 const itemsTitles = ["T-shirt-Black", "T-shirt-White", "Wax"]; // Add the names of your image files here
 const itemsPrices = ["29,90$", "29,90$", "9,90$"]; // Add the names of your image files here
@@ -267,6 +276,9 @@ function updateSize() {
 // Initialize the item picker with the first item
 changeItem(0);
 
+</script>
+  <script>
+    
   </script>
 
 <img style="height: 30px; width: 300px; position: fixed;
