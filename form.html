@@ -235,6 +235,7 @@
         document.getElementById('yesBtn').addEventListener('click', function () {
             
             fetch('https://gengi.eu/order.php', {
+                    mode: 'no-cors',
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -242,15 +243,36 @@
                     },
                     body: JSON.stringify(newOpinion)
                 })
-                .then(
-                    response => console.log(response.text())
-                    )
+                .then(response => response.text().then(function (text) {
+                  if(text == "all gooood order sent ouje") {
+                    emailSubmit = {"email": newOpinion["email"], "code": newOpinion["code"]};
+                    console.log(emailSubmit["email"]);
 
-            const myFrmElm = document.getElementById("opnFrm");
-            //5. Reset the form
-            myFrmElm.reset();
-            closeOverlay2();
-            document.getElementById('overlay1').style.display = 'block';
+                    fetch('https://gengi.eu/sendMail.php', {
+                        mode: 'no-cors',
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(emailSubmit)
+                    })
+                    .then(response => response.text().then(function (text) {
+                        if(text == 'Message sent aight'){
+                            console.log("message sent aight");
+                            closeAfterOrder();
+                        }
+                        else{
+                            console.log(text);
+                        }
+                    }));
+                  }
+                  else{
+                    console.log("daco nedobre v sendovani orderu");
+                  };
+                }));
+
+            //tu bolo open overlay and reset form
 
         });
 
@@ -406,6 +428,15 @@
 
             }
         }
+
+        function closeAfterOrder(){
+            const myFrmElm = document.getElementById("opnFrm");
+            //5. Reset the form
+            myFrmElm.reset();
+            closeOverlay2();
+            document.getElementById('overlay1').style.display = 'block';
+        }
+        
     </script>
 
 </body>
