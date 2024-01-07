@@ -209,8 +209,7 @@
       var expectedValue = 'pes'; // Replace with the expected value
 
       const codeJson = { "code" : inputFieldValue }
-      fetch('https://gengi.eu/checkCodes.php', {
-                    mode: 'no-cors',
+      fetch('http://localhost/gengi3/checkCodes.php', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

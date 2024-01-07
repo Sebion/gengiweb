@@ -234,8 +234,7 @@
         });
         document.getElementById('yesBtn').addEventListener('click', function () {
             
-            fetch('https://gengi.eu/order.php', {
-                    mode: 'no-cors',
+            fetch('http://localhost/gengi3/order.php', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -248,8 +247,7 @@
                     emailSubmit = {"email": newOpinion["email"], "code": newOpinion["code"]};
                     console.log(emailSubmit["email"]);
 
-                    fetch('https://gengi.eu/sendMail.php', {
-                        mode: 'no-cors',
+                    fetch('http://localhost/gengi3/sendMail.php', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
