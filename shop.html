@@ -209,7 +209,7 @@
       var expectedValue = 'pes'; // Replace with the expected value
 
       const codeJson = { "code" : inputFieldValue }
-      fetch('http://localhost/gengi3/checkCodes.php', {
+      fetch('https://gengi.eu/checkCodes.php', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -263,10 +263,30 @@
   }
 
   let currentItem = 0;
-const items = ["fig/ezgif.com-gif-maker.gif", "fig/whitet.gif", "fig/lego-spinning.gif"]; // Add the names of your image files here
-const itemsTitles = ["T-shirt-Black", "T-shirt-White", "Wax"]; // Add the names of your image files here
-const itemsPrices = ["29,90$", "29,90$", "9,90$"]; // Add the names of your image files here
+let items = []; // Add the names of your image files here
+let itemsTitles = []; // Add the names of your image files here
+let itemsPrices = []; // Add the names of your image files here
 
+function fetchProducts(){
+  fetch('https://gengi.eu/getProducts.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json().then(function (products){
+                  for (let i = 0; i < products.length; i++) {
+                    itemsTitles.push(products[i][0]);
+                    itemsPrices.push(products[i][1]);
+                    items.push(products[i][3]);
+                  }
+                  // Initialize the item picker with the first item
+                  changeItem(0);
+                }));
+}
+
+fetchProducts();
 
 function changeItem(step) {
   currentItem += step;
@@ -275,6 +295,9 @@ function changeItem(step) {
   } else if (currentItem >= items.length) {
     currentItem = 0;
   }
+
+  console.log(items);
+  console.log(itemsTitles);
 
   const itemImage = document.querySelector(".item");
   itemImage.src = items[currentItem];
@@ -290,9 +313,6 @@ function updateSize() {
   // Perform actions based on the selected size if needed
   console.log("Selected Size:", selectedSize);
 }
-
-// Initialize the item picker with the first item
-changeItem(0);
 
 </script>
   <script>
