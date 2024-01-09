@@ -209,7 +209,7 @@
       var expectedValue = 'pes'; // Replace with the expected value
 
       const codeJson = { "code" : inputFieldValue }
-      fetch('https://gengi.eu/checkCodes.php', {
+      fetch('http://localhost/gengiweb/checkCodes.php', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -268,7 +268,7 @@ let itemsTitles = []; // Add the names of your image files here
 let itemsPrices = []; // Add the names of your image files here
 
 function fetchProducts(){
-  fetch('https://gengi.eu/getProducts.php', {
+  fetch('http://localhost/gengiweb/getProducts.php', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -295,9 +295,6 @@ function changeItem(step) {
   } else if (currentItem >= items.length) {
     currentItem = 0;
   }
-
-  console.log(items);
-  console.log(itemsTitles);
 
   const itemImage = document.querySelector(".item");
   itemImage.src = items[currentItem];
