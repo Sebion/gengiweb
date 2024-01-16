@@ -229,7 +229,7 @@
                     setTimeout(function() {
                       document.getElementById('inputField').classList.remove('green-border');
                       // closeOverlay();
-                      window.location.href = 'form.html?code='+inputFieldValue+'&product='+itemsTitles[currentItem]+'&size='+document.getElementById("prod_size").value; // Replace with the desired page URL
+                      window.location.href = 'form.html?code='+inputFieldValue+'&product='+itemsTitles[currentItem]+'&size='+document.getElementById("prod_size").value+'&item='+itemsIDs[currentItem]; // Replace with the desired page URL
                     }, 1000);
                   }
                   else if(text == "t") {
@@ -263,7 +263,8 @@
   }
 
   let currentItem = 0;
-let items = []; // Add the names of your image files here
+let items = [];
+let itemsIDs = []; // Add the names of your image files here
 let itemsTitles = []; // Add the names of your image files here
 let itemsPrices = []; // Add the names of your image files here
 
@@ -277,9 +278,11 @@ function fetchProducts(){
                 })
                 .then(response => response.json().then(function (products){
                   for (let i = 0; i < products.length; i++) {
-                    itemsTitles.push(products[i][0]);
-                    itemsPrices.push(products[i][1]);
-                    items.push(products[i][3]);
+                    console.log(products[i]);
+                    itemsIDs.push(products[i][0]);
+                    itemsTitles.push(products[i][1]);
+                    itemsPrices.push(products[i][2]);
+                    items.push(products[i][4]);
                   }
                   // Initialize the item picker with the first item
                   changeItem(0);
@@ -295,6 +298,7 @@ function changeItem(step) {
   } else if (currentItem >= items.length) {
     currentItem = 0;
   }
+
 
   const itemImage = document.querySelector(".item");
   itemImage.src = items[currentItem];

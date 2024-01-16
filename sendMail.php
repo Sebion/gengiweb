@@ -44,8 +44,10 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is automatic message bitces ouje hreskovy smrdi cikula a markovy smrdza pazuchy a tukacovy smrdi z <b>papuly</b>';
+    $mail->Subject = 'Your GENGI Order';
+    $mail->Body    = 'Wop Wop<br><br> 
+    Prave si spravil najlepšiu objednávku tohto roku. Treba ju ešte zaplatiť aby sme mali začo si ďalej užívať.<br> 
+    Spôsob platby je <b>prevod na účet</b>. Na nasledujúcom linku sa nachádzajú potrebné informácie k platbe (IBAN, Variabilny symbol, Suma) <br><br><br>';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();

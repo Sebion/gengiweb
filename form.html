@@ -244,7 +244,7 @@
                 })
                 .then(response => response.text().then(function (text) {
                   if(text == "all gooood order sent ouje") {
-                    emailSubmit = {"email": newOpinion["email"], "code": newOpinion["code"]};
+                    emailSubmit = {"email": newOpinion["email"], "code": newOpinion["code"], "order": newOpinion["item"]};
                     console.log(emailSubmit["email"]);
 
                     fetch('http://localhost/gengiweb/sendMail.php', {
@@ -387,6 +387,7 @@
                 const code = urlParams.get('code');
                 const product = urlParams.get('product');
                 const size = urlParams.get('size');
+                const item = urlParams.get('item');
 
                 console.log(code, product, size);
 
@@ -404,6 +405,7 @@
                     "code": code,
                     "product": product,
                     "size": size,
+                    "item": item,
                     "created_at": new Date()
                 };
 

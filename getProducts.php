@@ -4,7 +4,7 @@
 
   $conn = pg_connect("host=postgresql.r5.websupport.sk port=5432 dbname=gengi_web_db user=gengi password=Roland2022");
   if($conn) {
-    $result = pg_query($conn, "select products.name, price, sizes, figs.url  from products join figs on products.productID = figs.productID");
+    $result = pg_query($conn, "select products.productID, products.name, price, sizes, figs.url  from products join figs on products.productID = figs.productID");
     if($result == false){
       echo 'Somethings wrong with code check brou';
     }
