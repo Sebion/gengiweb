@@ -15,10 +15,11 @@ $mail = new PHPMailer(true);
 
 $conn = pg_connect("host=postgresql.r5.websupport.sk port=5432 dbname=gengi_web_db user=gengi password=Roland2022");
   if($conn) {
-    $result = pg_query($conn, "UPDATE codes SET expired = true where code = '".$data["code"]."'");
+    $result = pg_query($conn, "UPDATE codes SET expired = true where code = '".$data["code"]."'; select products.price from orders join products on orders.productid = products.productid where code = '".$data["code"]."'");
     if($result == false){
     }
     else{
+      $am = pg_fetch_result($result, 0, 0);
     }
   } else {
   }
@@ -47,7 +48,8 @@ try {
     $mail->Subject = 'Your GENGI Order';
     $mail->Body    = 'Wop Wop<br><br> 
     Prave si spravil najlepšiu objednávku tohto roku. Treba ju ešte zaplatiť aby sme mali začo si ďalej užívať.<br> 
-    Spôsob platby je <b>prevod na účet</b>. Na nasledujúcom linku sa nachádzajú potrebné informácie k platbe (IBAN, Variabilny symbol, Suma) <br><br><br>';
+    Spôsob platby je <b>prevod na účet</b>. Na nasledujúcom linku sa nachádzajú potrebné informácie k platbe (IBAN, Variabilny symbol, Suma) <br><br><br>
+    https://payme.sk/?V=1&IBAN=SK8809000000005206752294&AM='.$am.'&CC=EUR&DT=20240118&PI=%2FVS'.$data["order"].'%2FSS'.$data["order"].'%2FKS'.$data["order"].'&MSG='.$data["code"].'&CN=GENGI+shop';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();

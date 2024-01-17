@@ -243,8 +243,9 @@
                     body: JSON.stringify(newOpinion)
                 })
                 .then(response => response.text().then(function (text) {
-                  if(text == "all gooood order sent ouje") {
-                    emailSubmit = {"email": newOpinion["email"], "code": newOpinion["code"], "order": newOpinion["item"]};
+                    let c = Array.from(text)[0];
+                  if(c >= '0' && c <= '9') {
+                    emailSubmit = {"email": newOpinion["email"], "code": newOpinion["code"], "order": text};
                     console.log(emailSubmit["email"]);
 
                     fetch('http://localhost/gengiweb/sendMail.php', {
@@ -266,7 +267,7 @@
                     }));
                   }
                   else{
-                    console.log("daco nedobre v sendovani orderu");
+                    console.log("daco nedobre v sendovani orderu",text);
                   };
                 }));
 
