@@ -47,10 +47,14 @@ try {
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Your GENGI Order';
     $mail->Body    = 'Wop Wop<br><br> 
-    Prave si spravil najlepšiu objednávku tohto roku. Treba ju ešte zaplatiť aby sme mali začo si ďalej užívať.<br> 
-    Spôsob platby je <b>prevod na účet</b>. Na nasledujúcom linku sa nachádzajú potrebné informácie k platbe (IBAN, Variabilny symbol, Suma) <br><br><br>
-    https://payme.sk/?V=1&IBAN=SK8809000000005206752294&AM='.$am.'&CC=EUR&DT=20240118&PI=%2FVS'.$data["order"].'%2FSS'.$data["order"].'%2FKS'.$data["order"].'&MSG='.$data["code"].'&CN=GENGI+shop';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    Prave si spravil najlepšiu objednávku tohto roku. Treba ju ešte zaplatiť aby sme mali začo si ďalej užívať.<br>
+    Spôsob platby je <b>prevod na účet</b>. Na nasledujúcom linku sa nachádzajú potrebné informácie k platbe (IBAN, Variabilný symbol, Suma) <br><br><br>
+    https://payme.sk/?V=1&IBAN=SK8809000000005206752294&AM='.$am.'&CC=EUR&DT=20240118&PI=%2FVS'.$data["order"].'%2FSS'.$data["order"].'%2FKS'.$data["order"].'&MSG='.$data["code"].'&CN=GENGI+shop <br><br><br>
+    Svoj gengi balíček očakávaj v priebehu 3 dní od zaplatenia na svojej pošte!';
+    $mail->AltBody = 'Wop Wop. Prave si spravil najlepšiu objednávku tohto roku. Treba ju ešte zaplatiť aby sme mali začo si ďalej užívať. 
+    Spôsob platby je prevod na účet. Na nasledujúcom linku sa nachádzajú potrebné informácie k platbe (IBAN, Variabilný symbol, Suma). 
+    https://payme.sk/?V=1&IBAN=SK8809000000005206752294&AM='.$am.'&CC=EUR&DT=20240118&PI=%2FVS'.$data["order"].'%2FSS'.$data["order"].'%2FKS'.$data["order"].'&MSG='.$data["code"].'&CN=GENGI+shop . 
+    Svoj gengi balíček očakávaj v priebehu 3 dní od zaplatenia na svojej pošte!';
 
     $mail->send();
     echo 'Message sent aight';
