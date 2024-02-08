@@ -1,4 +1,8 @@
 <?php
+  // Allow requests from any origin
+  header("Access-Control-Allow-Origin: *");
+  // Allow the content type header
+  header("Access-Control-Allow-Headers: Content-Type");
   $jsonData = file_get_contents('php://input');
   $data = json_decode($jsonData, true);
 
