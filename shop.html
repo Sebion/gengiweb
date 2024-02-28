@@ -145,7 +145,7 @@
 
 </script>
   <div class="loader">
-    <p class="par" data-title="please wait for no reason...">please wait for no reason...</p>
+    <p class="par" data-title="please wait for no reason..." style="display:bl">please wait for no reason...</p>
   </div>
   <a class="links_goBack" href="index.html">&lt;&lt; return </a>
 
@@ -209,7 +209,7 @@
       var expectedValue = 'pes'; // Replace with the expected value
 
       const codeJson = { "code" : inputFieldValue }
-      fetch('http://localhost/gengiweb/checkCodes.php', {
+      fetch('https://gengi.eu/checkCodes.php/', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -262,14 +262,14 @@
     document.getElementById('overlay').style.display = 'none';
   }
 
-  let currentItem = 0;
+let currentItem = 0;
 let items = [];
 let itemsIDs = []; // Add the names of your image files here
 let itemsTitles = []; // Add the names of your image files here
 let itemsPrices = []; // Add the names of your image files here
 
 function fetchProducts(){
-  fetch('http://localhost/gengiweb/getProducts.php', {
+  fetch('https://gengi.eu/getProducts.php/', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -282,31 +282,38 @@ function fetchProducts(){
                     itemsIDs.push(products[i][0]);
                     itemsTitles.push(products[i][1]);
                     itemsPrices.push(products[i][2]);
-                    items.push(products[i][4]);
+                    
+                    let newImage = new Image();
+                    newImage.src = products[i][4];
+                    items.push(newImage);
+                    console.log(newImage);
                   }
                   // Initialize the item picker with the first item
                   changeItem(0);
+                  
+                  //document.querySelector('.loader').style.display = 'none';
+
                 }));
 }
 
+var itemImage = document.querySelector('.item');
+var itemTitle = document.querySelector('.item-title');
+var itemPrice = document.querySelector('.item-price');
+
 fetchProducts();
 
+// Function to change item
 function changeItem(step) {
-  currentItem += step;
-  if (currentItem < 0) {
-    currentItem = items.length - 1;
-  } else if (currentItem >= items.length) {
-    currentItem = 0;
-  }
-
-
-  const itemImage = document.querySelector(".item");
-  itemImage.src = items[currentItem];
-  const itemTitle = document.querySelector(".item-title");
-  itemTitle.innerHTML = itemsTitles[currentItem];
-  const itemPrice = document.querySelector(".item-price");
-  itemPrice.innerHTML = itemsPrices[currentItem];
-
+    currentItem += step;
+    if (currentItem < 0) {
+      currentItem = items.length - 1;
+    } else if (currentItem >= items.length) {
+      currentItem = 0;
+    }
+    console.log(items[currentItem]);
+    itemImage.src = items[currentItem].src;
+    itemTitle.innerHTML = itemsTitles[currentItem];
+    itemPrice.innerHTML = itemsPrices[currentItem];
 }
 
 function updateSize() {
@@ -316,9 +323,6 @@ function updateSize() {
 }
 
 </script>
-  <script>
-    
-  </script>
 
 <img style="height: 30px; width: 300px; position: fixed;
   bottom: 5px;
