@@ -103,16 +103,7 @@
     color: grey;
     font-family: 'VT323', monospace;
   }
-  
-  .par
-  {
-    text-align: center;
-    font-family: 'VT323', monospace;
-    margin: 1em;
-  
-  }
-  
-  
+    
   .form {
       position: fixed;
       width: 100%;
@@ -234,7 +225,7 @@
   }
   #buy-btn{
     margin: 2em;
-    font-size: 16px;
+    font-size: 17px;
     background-color: transparent;
     border: none;
     color: #551a8b;
@@ -314,7 +305,7 @@
       font-size: 25px;
     }
     .item-picker {
-      font-size: 25px;
+      font-size: 24px;
     }
     #prod_size{
       font-size: 25px;
@@ -353,6 +344,17 @@
     .info-icon {
       font-size: 16px;
     }
+
+    .sizeOpt.bigger {
+      font-size: 26px;
+      color: #2fff00;
+    }
+    .par
+    {
+      font-size: 25px;
+    
+    }
+    
   }
   @media screen and (max-width: 1200px) and (min-width: 600px){
     /* CSS rules */
@@ -376,7 +378,7 @@
       font-size: 30px;
     }
     .item-picker {
-      font-size: 30px;
+      font-size: 28px;
     }
     #prod_size{
       font-size: 30px;
@@ -416,8 +418,24 @@
     .info-icon {
       font-size: 20px;
     }
+    .sizeOpt.bigger {
+      font-size: 30px;
+      color: #2fff00;
+    }
+    .par
+    {
+      font-size: 30px;
+    
+    }
   }
+  .par
+  {
+    text-align: center;
+    font-family: 'VT323', monospace;
+    margin: 1em;
+    display:block;
   
+  }
   #footlink{
     font-family: 'VT323', monospace;
     margin-top: 0.4em;
@@ -492,7 +510,7 @@
   }
   .loader > p{
     position: relative;
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
   }
   .loader > p::before,
   .loader > p::after {
@@ -589,6 +607,7 @@
   }
   .item-picker {
     text-align: center;
+    font-size: 17px;
   }
   
   .item-container {
@@ -607,6 +626,31 @@
   
   .size-picker {
     margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sizeOpt{
+    min-width: 30px; /* Adjust as per your requirements */
+    min-height: 30px; 
+  }
+  
+  .sizeOpt.bigger {
+    font-size: 20px;
+    color: #2fff00;
+
+  }
+  
+  .sizeOpt.inactive {
+    pointer-events: none; /* Disable pointer events on inactive elements */
+    opacity: 0.3;
+  }
+  
+  #small:hover,
+  #medium:hover,
+  #large:hover,
+  #xlarge:hover {
+    color: #2fff00; /* Change text color to red when hovering */
   }
   
   .nav-btn {

@@ -145,7 +145,7 @@
 
 </script>
   <div class="loader">
-    <p class="par" data-title="please wait for no reason..." style="display:bl">please wait for no reason...</p>
+    <p class="par" data-title="please wait for no reason...">please wait for no reason...</p>
   </div>
   <a class="links_goBack" href="index.html">&lt;&lt; return </a>
 
@@ -165,13 +165,17 @@
     </div>
     <p class="item-price">29,90$</p>
     <div class="size-picker">
-      <label for="prod_size">Size:</label>
+      <div id="small" class="sizeOpt">small</div>-
+      <div id="medium" class="sizeOpt">medium</div>-
+      <div id="large" class="sizeOpt">large</div>-
+      <div id="xlarge" class="sizeOpt">xlarge</div>
+      <!-- <label for="prod_size">Size:</label>
       <select id="prod_size" onchange="updateSize()">
         <option value="small">Small (S)</option>
         <option value="medium">Medium (M)</option>
         <option value="large">Large (L)</option>
         <option value="Xlarge">Extra large (XL)</option>
-      </select>
+      </select> -->
     </div>
     <button id="buy-btn">&lt; Buy this item &gt;</button>
   </div>
@@ -229,7 +233,7 @@
                     setTimeout(function() {
                       document.getElementById('inputField').classList.remove('green-border');
                       // closeOverlay();
-                      window.location.href = 'form.html?code='+inputFieldValue+'&product='+itemsTitles[currentItem]+'&size='+document.getElementById("prod_size").value+'&item='+itemsIDs[currentItem]; // Replace with the desired page URL
+                      window.location.href = 'form.html?code='+inputFieldValue+'&product='+itemsTitles[currentItem]+'&size='+currentItemSize+'&item='+itemsIDs[currentItem]; // Replace with the desired page URL
                     }, 1000);
                   }
                   else if(text == "t") {
@@ -263,10 +267,12 @@
   }
 
 let currentItem = 0;
+let currentItemSize = "small";
 let items = [];
 let itemsIDs = []; // Add the names of your image files here
 let itemsTitles = []; // Add the names of your image files here
 let itemsPrices = []; // Add the names of your image files here
+let itemsSizes = []; 
 
 function fetchProducts(){
   fetch('https://gengi.eu/getProducts.php/', {
@@ -282,6 +288,7 @@ function fetchProducts(){
                     itemsIDs.push(products[i][0]);
                     itemsTitles.push(products[i][1]);
                     itemsPrices.push(products[i][2]);
+                    itemsSizes.push(products[i][3].split("-"));
                     
                     let newImage = new Image();
                     newImage.src = products[i][4];
@@ -314,7 +321,33 @@ function changeItem(step) {
     itemImage.src = items[currentItem].src;
     itemTitle.innerHTML = itemsTitles[currentItem];
     itemPrice.innerHTML = itemsPrices[currentItem];
+
+    var picker = document.querySelector('.size-picker');
+
+    for (let i = 0; i < picker.children.length; i++) {
+      if(itemsSizes[currentItem][i] != picker.children[i].id){
+        picker.children[i].classList.add('inactive');
+        picker.children[i].classList.remove('bigger');
+      }
+      else{
+        picker.children[i].classList.remove('inactive');
+      }
+    } 
+    
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const children = document.querySelectorAll('.sizeOpt');
+  
+  children.forEach(child => {
+    child.addEventListener('click', function() {
+      children.forEach(c => c.classList.remove('bigger')); // Reset all children
+      this.classList.add('bigger'); // Add 'bigger' class to the clicked child
+      currentItemSize = this.id;
+      console.log(currentItemSize);
+    });
+  });
+});
 
 function updateSize() {
   const selectedSize = document.getElementById("size").value;

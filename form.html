@@ -150,6 +150,9 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Your email address..">
 
+            <label for="email2">Email again:</label>
+            <input type="email" id="email2" name="email2" placeholder="Repeat your email address..">
+
             <label for="phone">Phone number:</label>
             <input type="tel" id="phone" name="phone" placeholder="+421012345678">
 
@@ -234,7 +237,7 @@
         });
         document.getElementById('yesBtn').addEventListener('click', function () {
             
-            fetch('http://localhost/gengiweb/order.php', {
+            fetch('https://gengi.eu/order.php', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -248,7 +251,7 @@
                     emailSubmit = {"email": newOpinion["email"], "code": newOpinion["code"], "order": text};
                     console.log(emailSubmit["email"]);
 
-                    fetch('http://localhost/gengiweb/sendMail.php', {
+                    fetch('https://gengi.eu/sendMail.php', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -356,6 +359,15 @@
                 postal.classList.add('error');
                 setTimeout(function () {
                     postal.classList.remove('error');
+                }, 300);
+                isOk=false;
+            }
+            if (email.value != email2.value) {
+                email.classList.add('error');
+                email2.classList.add('error');
+                setTimeout(function () {
+                    email.classList.remove('error');
+                    email2.classList.remove('error');
                 }, 300);
                 isOk=false;
             }
