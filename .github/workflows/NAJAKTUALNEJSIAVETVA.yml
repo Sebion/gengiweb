@@ -1,0 +1,19 @@
+on: push
+name: Odlot do serveru
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get Latest Code
+      uses: actions/checkout@v3
+
+    - name: Sync Files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: gengi.eu
+        username: ${{ secrets.FTPUSERNAME }}
+        password: ${{ secrets.FTPPASSWORD }}
+        protocol: ftps
+        server-dir: web/
+      
