@@ -150,6 +150,9 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Your email address..">
 
+            <label for="email2">Email again:</label>
+            <input type="email" id="email2" name="email2" placeholder="Repeat your email address..">
+
             <label for="phone">Phone number:</label>
             <input type="tel" id="phone" name="phone" placeholder="+421012345678">
 
@@ -242,15 +245,36 @@
                     },
                     body: JSON.stringify(newOpinion)
                 })
-                .then(
-                    response => console.log(response.text())
-                    )
+                .then(response => response.text().then(function (text) {
+                    let c = Array.from(text)[0];
+                  if(c >= '0' && c <= '9') {
+                    emailSubmit = {"email": newOpinion["email"], "code": newOpinion["code"], "order": text};
+                    console.log(emailSubmit["email"]);
 
-            const myFrmElm = document.getElementById("opnFrm");
-            //5. Reset the form
-            myFrmElm.reset();
-            closeOverlay2();
-            document.getElementById('overlay1').style.display = 'block';
+                    fetch('https://gengi.eu/sendMail.php', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(emailSubmit)
+                    })
+                    .then(response => response.text().then(function (text) {
+                        if(text == 'Message sent aight'){
+                            console.log("message sent aight");
+                            closeAfterOrder();
+                        }
+                        else{
+                            console.log(text);
+                        }
+                    }));
+                  }
+                  else{
+                    console.log("daco nedobre v sendovani orderu",text);
+                  };
+                }));
+
+            //tu bolo open overlay and reset form
 
         });
 
@@ -338,6 +362,15 @@
                 }, 300);
                 isOk=false;
             }
+            if (email.value != email2.value) {
+                email.classList.add('error');
+                email2.classList.add('error');
+                setTimeout(function () {
+                    email.classList.remove('error');
+                    email2.classList.remove('error');
+                }, 300);
+                isOk=false;
+            }
             if (!validateEmail(email.value)) {
                 email.classList.add('error');
                 setTimeout(function () {
@@ -367,6 +400,7 @@
                 const code = urlParams.get('code');
                 const product = urlParams.get('product');
                 const size = urlParams.get('size');
+                const item = urlParams.get('item');
 
                 console.log(code, product, size);
 
@@ -384,6 +418,7 @@
                     "code": code,
                     "product": product,
                     "size": size,
+                    "item": item,
                     "created_at": new Date()
                 };
 
@@ -406,6 +441,15 @@
 
             }
         }
+
+        function closeAfterOrder(){
+            const myFrmElm = document.getElementById("opnFrm");
+            //5. Reset the form
+            myFrmElm.reset();
+            closeOverlay2();
+            document.getElementById('overlay1').style.display = 'block';
+        }
+        
     </script>
 
 </body>

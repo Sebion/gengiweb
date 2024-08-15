@@ -1,5 +1,5 @@
 <?php
-// Allow requests from any origin
+  // Allow requests from any origin
   header("Access-Control-Allow-Origin: *");
   // Allow the content type header
   header("Access-Control-Allow-Headers: Content-Type");
@@ -8,7 +8,7 @@
 
   $conn = pg_connect("host=postgresql.r5.websupport.sk port=5432 dbname=gengi_web_db user=gengi password=Roland2022");
   if($conn) {
-    $result = pg_query($conn, "SELECT expired FROM codes where code = '".$data["code"]."'");
+    $result = pg_query($conn, "select products.productID, products.name, price, sizes, figs.url  from products join figs on products.productID = figs.productID");
     if($result == false){
       echo 'Somethings wrong with code check brou';
     }
@@ -17,7 +17,12 @@
         echo 'Seems like wrong code brou';
       }
       else{
-        echo pg_fetch_result($result, 0, 0);
+        $myarray = array();
+        while ($row = pg_fetch_row($result)) {
+          $myarray[] = $row;
+        }
+
+        echo json_encode($myarray);
       }
     }
  } else {
