@@ -165,7 +165,7 @@
     </div>
     <p class="item-price">29,90$</p>
     <div class="size-picker">
-<!--      <div id="small" class="sizeOpt">small</div>- -->
+      <div id="small" class="sizeOpt">small</div>-
       <div id="medium" class="sizeOpt">medium</div>-
       <div id="large" class="sizeOpt">large</div>-
       <div id="xlarge" class="sizeOpt">xlarge</div>
@@ -325,13 +325,15 @@ function changeItem(step) {
     var picker = document.querySelector('.size-picker');
 
     for (let i = 0; i < picker.children.length; i++) {
-      if(itemsSizes[currentItem][i] != picker.children[i].id){
-        picker.children[i].classList.add('inactive');
-        picker.children[i].classList.remove('bigger');
-      }
-      else{
-        picker.children[i].classList.remove('inactive');
-      }
+        for (let j = 0; j < itemsSizes.length; j++) {
+            if(itemsSizes[currentItem][j] != picker.children[i].id){
+                picker.children[i].classList.add('inactive');
+                picker.children[i].classList.remove('bigger');
+            }
+            else{
+                picker.children[i].classList.remove('inactive');
+            }
+        }
     } 
     
 }
