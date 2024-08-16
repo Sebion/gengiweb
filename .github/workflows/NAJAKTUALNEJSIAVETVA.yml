@@ -15,5 +15,5 @@ jobs:
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
         protocol: ftps
-        server-dir: web/
+        server-dir: gengi.eu/web/
       
