@@ -325,22 +325,18 @@ function changeItem(step) {
     var picker = document.querySelector('.size-picker');
 
     for (let i = 0; i < picker.children.length; i++) {
-        for (let j = 0; j < itemsSizes[currentItem].length; j++) {
-            console.log(itemsSizes[currentItem][j]+"pred ifom");
-            console.log(picker.children[i].id +"pred ifom");
-            if(itemsSizes[currentItem][j] != picker.children[i].id){
+
+            if(!itemsSizes[currentItem].includes(picker.children[i].id)){
                 picker.children[i].classList.add('inactive');
                 picker.children[i].classList.remove('bigger');
-                console.log(itemsSizes[currentItem][j]+"v ife");
-                console.log(picker.children[i].id +"v ife");
+
             }
             else{
-                console.log(itemsSizes[currentItem][j]+"v else");
-                console.log(picker.children[i].id +"v else");
+
                 picker.children[i].classList.remove('inactive');
             }
 
-        }
+
     } 
     
 }
