@@ -47,7 +47,7 @@ try {
     // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
-    $datestr = date('y-m-d', strtotime('+3 days'));
+    $datestr = date('y-m-d');
     $date = "20".str_replace("-","",$datestr);
 
     $color = "'#0066cc'";

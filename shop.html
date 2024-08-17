@@ -243,7 +243,7 @@
                     setTimeout(function() {
                       document.getElementById('inputField').classList.remove('green-border');
                       // closeOverlay();
-                      window.location.href = 'form.html?code='+inputFieldValue+'&product='+itemsTitles[currentItem]+'&size='+currentItemSize+'&item='+itemsIDs[currentItem]; // Replace with the desired page URL
+                      window.location.href = 'form.html?code='+inputFieldValue+'&product='+itemsTitles[currentItem]+'&size='+currentItemSize+'&item='+itemsIDs[currentItem]+'&price='+itemsPrices[currentItem]; // Replace with the desired page URL
                     }, 1000);
                   }
                   else if(text == "t") {
@@ -297,7 +297,7 @@ function fetchProducts(){
                     console.log(products[i]);
                     itemsIDs.push(products[i][0]);
                     itemsTitles.push(products[i][1]);
-                    itemsPrices.push(products[i][2]+"€");
+                    itemsPrices.push(products[i][2]);
                     itemsSizes.push(products[i][3].split("-"));
                     
                     let newImage = new Image();
@@ -330,7 +330,7 @@ function changeItem(step) {
     console.log(items[currentItem]);
     itemImage.src = items[currentItem].src;
     itemTitle.innerHTML = itemsTitles[currentItem];
-    itemPrice.innerHTML = itemsPrices[currentItem];
+    itemPrice.innerHTML = itemsPrices[currentItem]+"€";
 
     var picker = document.querySelector('.size-picker');
 
