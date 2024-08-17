@@ -204,7 +204,17 @@
 <script>
   // JavaScript to handle the button click and show the overlay
   document.getElementById('buy-btn').addEventListener('click', function() {
-    document.getElementById('overlay').style.display = 'block';
+    if (currentItemSize == "") {
+      var sizepicker = document.querySelector('.size-picker');
+      sizepicker.classList.add('error');
+      setTimeout(function () {
+        sizepicker.classList.remove('error');
+      }, 300);
+
+    }
+    else{
+      document.getElementById('overlay').style.display = 'block';
+    }
   });
 
   // JavaScript to handle the OK and Cancel buttons
@@ -267,7 +277,7 @@
   }
 
 let currentItem = 0;
-let currentItemSize = "small";
+let currentItemSize = "";
 let items = [];
 let itemsIDs = []; // Add the names of your image files here
 let itemsTitles = []; // Add the names of your image files here
