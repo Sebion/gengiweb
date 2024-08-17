@@ -67,6 +67,13 @@ Spôsob platby je <b>prevod na účet</b>. Kliknutím na tlačidlo sa dostaneš 
 <a href="https://payme.sk/?V=1&IBAN=SK8809000000005206752294&AM='.$am.'&CC=EUR&DT='.$date.'&PI=%2FVS'.$data["order"].'%2FSS'.$data["order"].'%2FKS'.$data["order"].'&MSG='.$data["code"].'&CN=GENGI+shop" style="display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; cursor: pointer; border-radius: 10px; background-color: rgb(64, 73, 255); color: #fff; border: none; outline: none; transition: background-color 0.3s;">Pokračuj k platbe</a><br><br><br>
 Svoj gengi balíček očakávaj v priebehu 3 dní od zaplatenia na svojej pošte!<br><br>
 V prípade akýchkoľvek informácií nás neváhajte kontaktovať spatným emailom.<br><br>
+Ak ti nefunguje tlačidlo na platbu, tu sú údaje ktoré trebá zadať pri platbe:<br>
+IBAN: SK8809000000005206752294<br>
+Suma: '.$am.'€ <br>
+Variabilný symbol: '.$data["order"].'<br>
+Správa pre prijímateľa: '.$data["code"].'<br>
+
+
 Pozdravuje, Tím
 </p>
 <br>
