@@ -169,6 +169,16 @@
       width: 70%;
   
   }
+  input[type=tel]{
+    margin-bottom: 0.5em;
+    width: 70%;
+
+  }
+  input[type=number]{
+    margin-bottom: 0.5em;
+    width: 70%;
+
+  }
   input[type=firstName]{
       margin-bottom: 0.5em;
       width: 70%;

@@ -156,6 +156,9 @@
             <label for="phone">Phone number:</label>
             <input type="tel" id="phone" name="phone" placeholder="+421012345678">
 
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" placeholder="Country:">
+
             <label for="city">City:</label>
             <input type="text" id="city" name="city" placeholder="City:">
 
@@ -199,17 +202,18 @@
     <div class="overlay" id="overlay1">
         <!-- Modal container -->
         <div class="modal" style="text-align: center;">
-            <label for="okBtn">Congratulations !<br>You have just purchased this item: T-Shirt-White<br><br>You will
+            <label for="okBtn">Congratulations !<br>You have just purchased this item: SUNBURNT-T - size <br><br>You will
                 recieve your confirmation email soon..<br></label>
             <!-- <input type="text" id="inputField" /> -->
             <button id="okBtn" style="margin-top: 25px;">Go back</button>
 
         </div>
     </div>
+
     <div class="overlay" id="overlay2">
         <!-- Modal container -->
         <div class="modal" style="text-align: center;">
-            <label for="yesBtn">Are you sure you want to purchase this item ?<br>T-Shirt-White - XL<br></label>
+            <label for="yesBtn">Are you sure you want to purchase this item ?<br>SUNBURNT-T - size<br></label>
             <!-- <input type="text" id="inputField" /> -->
             <button id="yesBtn" style="margin-top: 25px;">Yes</button>
             <button id="goBackBtn" style="margin-top: 25px;">No</button>
@@ -306,7 +310,7 @@
         }
 
         function validatePhone(phone) {
-            var re = /\+[0-9]+/i;
+            var re = /^(\+[0-9]+|[0-9]{10})$/;
             return re.test(phone);
         }
 
@@ -321,6 +325,7 @@
             var lname = document.getElementById('lname');
             var email = document.getElementById('email');
             var phone = document.getElementById('phone');
+            var country = document.getElementById('country')
             var city = document.getElementById('city');
             var street = document.getElementById('street');
             var postal = document.getElementById('postal');
@@ -339,6 +344,13 @@
                 lname.classList.add('error');
                 setTimeout(function () {
                     lname.classList.remove('error');
+                }, 300);
+                isOk=false;
+            }
+            if (!country.value) {
+                country.classList.add('error');
+                setTimeout(function () {
+                    country.classList.remove('error');
                 }, 300);
                 isOk=false;
             }
