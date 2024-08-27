@@ -279,8 +279,8 @@ input[name="keyw"] {
 }
 
 #buy-btn {
-  margin: 2em;
-  font-size: 17px;
+  margin: 20px;
+  font-size: 20px;
   background-color: transparent;
   border: none;
   color: #551a8b;
@@ -383,9 +383,8 @@ input[name="keyw"] {
 .size-chart {
   position: relative;
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   color: gray;
-  margin-top: 5px;
 }
 
 .size-table {
