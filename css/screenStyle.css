@@ -241,7 +241,7 @@
     background-color: transparent;
     border: none;
     color: #551a8b;
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
   #buy-btn:hover{
     color: #2fff00;
