@@ -227,6 +227,7 @@
     display: block;
     text-align: center;
     opacity: 0.85;
+    text-decoration: none;
   }
   
   .links_tv:hover{
