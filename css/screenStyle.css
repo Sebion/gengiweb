@@ -260,15 +260,18 @@ input[name="keyw"] {
   text-decoration: none;
 }
 
+.links_tv.hover-effect,
 .links_tv:hover {
   color: #2fff00;
 }
 
+.links_tv.hover-effect::before,
 .links_tv:hover::before {
   content: "<<";
   margin-right: 5px;
 }
 
+.links_tv.hover-effect::after,
 .links_tv:hover::after {
   content: ">>";
   margin-left: 5px;

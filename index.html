@@ -157,6 +157,24 @@
 
 
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.links_tv');
+
+            links.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent the default link behavior
+                    const href = link.getAttribute('href');
+                    link.classList.add('hover-effect');
+                    setTimeout(() => {
+                        window.location.href = href;
+                        link.classList.remove('hover-effect');
+                    }, 1000); // 2 seconds delay
+                });
+            });
+        });
+    </script>
+    
 </div>
 <!--<img style="height: 100px; width: 1000px; position: fixed;-->
 <!--  bottom: 5px;-->
