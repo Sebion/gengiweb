@@ -621,9 +621,9 @@ input[name="keyw"] {
 }
 
 .par {
-  text-align: center;
+  /* text-align: center; */
   font-family: 'VT323', monospace;
-  margin: 1em;
+  margin-top: 0.5em;
   display: block;
 
 }
@@ -634,7 +634,6 @@ input[name="keyw"] {
 }
 
 .links {
-
   font-family: 'VT323', monospace;
   margin-top: 0.5em;
   display: block;

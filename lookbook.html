@@ -1,124 +1,124 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>gengi-lookbook</title>
-    <meta charset="UTF-8">
+  <title>gengi-lookbook</title>
+  <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="css/screenStyle.css">
-    <link rel="stylesheet" href="css/slideShow.css">
-    <link rel="stylesheet" href="css/printStyle.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/screenStyle.css">
+  <link rel="stylesheet" href="css/slideShow.css">
+  <link rel="stylesheet" href="css/printStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/fig/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/fig/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/fig/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/fig/favicon_io/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="/fig/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/fig/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/fig/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/fig/favicon_io/site.webmanifest">
 
 </head>
 
 <body>
-<div style="display: flex; justify-content: space-between;">
+  <div style="display: flex; justify-content: space-between;">
     <p id="size"></p>
 
     <script>
 
-        var x = document.getElementById("size");
-        go();
-        window.addEventListener('resize', go);
+      var x = document.getElementById("size");
+      go();
+      window.addEventListener('resize', go);
 
-        function go() {
-            var w = document.documentElement.clientWidth;
-            var h = document.documentElement.clientHeight;
-            x.innerHTML = w + "px x " + h + "px";
-        }
+      function go() {
+        var w = document.documentElement.clientWidth;
+        var h = document.documentElement.clientHeight;
+        x.innerHTML = w + "px x " + h + "px";
+      }
     </script>
 
     <p id="time"></p>
 
     <script>
+      document.getElementById('time').innerHTML = Date();
+      setInterval(function () {
         document.getElementById('time').innerHTML = Date();
-        setInterval(function () {
-            document.getElementById('time').innerHTML = Date();
-        }, 1000);
+      }, 1000);
 
     </script>
-</div>
-<div id="screensaver"
-     style="position: absolute; height: 100vh;
+  </div>
+  <div id="screensaver" style="position: absolute; height: 100vh;
   width: 100vw; left:0px; top: 0px; display: none; z-index:9999; background-color:black;">
     <img id="dvd" style="height: 80px; width: 600px; position: absolute;
   left: 0px;
   top: 0px;" src="fig/gengiinverted.gif" alt="gif">
-</div>
+  </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
     $(document).ready(function () {
-        var mousetimeout;
-        var screensaver_active = false;
-        var idletime = 60;
+      var mousetimeout;
+      var screensaver_active = false;
+      var idletime = 60;
 
-        function show_screensaver() {
-            $('#screensaver').fadeIn();
-            screensaver_active = true;
-            screensaver_animation();
+      function show_screensaver() {
+        $('#screensaver').fadeIn();
+        screensaver_active = true;
+        screensaver_animation();
+      }
+
+      function stop_screensaver() {
+        $('#screensaver').fadeOut();
+        screensaver_active = false;
+      }
+
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.round(Math.random() * 15)];
         }
+        return color;
+      }
 
-        function stop_screensaver() {
-            $('#screensaver').fadeOut();
-            screensaver_active = false;
+      // $(document).click(function () {
+      //     clearTimeout(mousetimeout);
+      //
+      //     if (screensaver_active) {
+      //         stop_screensaver();
+      //     }
+      //
+      //     mousetimeout = setTimeout(function () {
+      //         show_screensaver();
+      //     }, 500 * idletime); // 5 secs
+      // });
+
+      $(document).mousemove(function () {
+        clearTimeout(mousetimeout);
+
+        if (screensaver_active) {
+          stop_screensaver();
         }
+        mousetimeout = setTimeout(function () {
+          show_screensaver();
+        }, 1000 * idletime); // 5 secs
+      });
 
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF'.split('');
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.round(Math.random() * 15)];
-            }
-            return color;
+      function screensaver_animation() {
+        if (screensaver_active) {
+          $('#screensaver').animate(
+            { backgroundColor: getRandomColor() },
+            400,
+            screensaver_animation);
         }
-
-        // $(document).click(function () {
-        //     clearTimeout(mousetimeout);
-        //
-        //     if (screensaver_active) {
-        //         stop_screensaver();
-        //     }
-        //
-        //     mousetimeout = setTimeout(function () {
-        //         show_screensaver();
-        //     }, 500 * idletime); // 5 secs
-        // });
-
-        $(document).mousemove(function () {
-            clearTimeout(mousetimeout);
-
-            if (screensaver_active) {
-                stop_screensaver();
-            }
-            mousetimeout = setTimeout(function () {
-                show_screensaver();
-            }, 1000 * idletime); // 5 secs
-        });
-
-        function screensaver_animation() {
-            if (screensaver_active) {
-                $('#screensaver').animate(
-                    {backgroundColor: getRandomColor()},
-                    400,
-                    screensaver_animation);
-            }
-        }
+      }
     });
-</script>
+  </script>
 
-<script>
+  <script>
     var x = 0,
-        y = 0,
-        dirX = 1,
-        dirY = 1;
+      y = 0,
+      dirX = 1,
+      dirY = 1;
     const speed = 2;
     let dvd = document.getElementById("dvd");
     let screensaver = document.getElementById("screensaver");
@@ -126,38 +126,40 @@
     const dvdHeight = dvd.clientHeight;
 
     function animate() {
-        const screenHeight = screensaver.clientHeight;
-        const screenWidth = screensaver.clientWidth;
+      const screenHeight = screensaver.clientHeight;
+      const screenWidth = screensaver.clientWidth;
 
-        if (y + dvdHeight +60 >= screenHeight || y < 0) {
-            dirY *= -1;
+      if (y + dvdHeight + 60 >= screenHeight || y < 0) {
+        dirY *= -1;
 
-        }
-        if (x + dvdWidth + 600>= screenWidth || x < 0) {
-            dirX *= -1;
+      }
+      if (x + dvdWidth + 600 >= screenWidth || x < 0) {
+        dirX *= -1;
 
-        }
-        x += dirX * speed;
-        y += dirY * speed;
-        dvd.style.left = x + "px";
-        dvd.style.top = y + "px";
-        window.requestAnimationFrame(animate);
+      }
+      x += dirX * speed;
+      y += dirY * speed;
+      dvd.style.left = x + "px";
+      dvd.style.top = y + "px";
+      window.requestAnimationFrame(animate);
     }
 
     window.requestAnimationFrame(animate);
 
-</script>
-<a class="links_goBack" href="index.html">&lt;&lt; return</a>
+  </script>
+  <a class="links_goBack" href="index.html">&lt;&lt; return</a>
 
-<div class="boddy">
+  <div class="boddy">
     <div class="wrapper">
-  <img src="fig/lookbook.gif" alt="gif">
-<!--    <h2 class="par" style="color:#2fff00">Lookbook</h2>-->
-  <p class="par">Season 1</p>
-</div>
+      <img src="fig/lookbook.gif" alt="gif" style="width: 120px;">
+      <!-- <p style="color:#00ff00; font-size: 21px; text-decoration: underline;">LOOK-BOOK</p> -->
+      <p class="par" id="season-1">season-1</p>
+      <p class="par" id="season-2">season-2</p>
 
-<div class="slider">
-      <div class="slide active">
+    </div>
+
+    <div class="slider">
+      <!-- <div class="slide active">
         <img src="fig/slideshow/IMG_1820.jpg" alt="">
 
       </div>
@@ -172,11 +174,15 @@
       <div class="slide">
         <img src="fig/slideshow/IMG_0008fixed.jpg" alt="">
 
-      </div>
-<!--      <div class="slide">-->
-<!--        <img src="fig/slideshow/IMG_0008.JPG" alt="">-->
+      </div> -->
+      <div class="slide active"><img id="slide-1" src="" alt=""></div>
+      <div class="slide"><img id="slide-2" src="" alt=""></div>
+      <div class="slide"><img id="slide-3" src="" alt=""></div>
+      <div class="slide"><img id="slide-4" src="" alt=""></div>
+      <!--      <div class="slide">-->
+      <!--        <img src="fig/slideshow/IMG_0008.JPG" alt="">-->
 
-<!--      </div>-->
+      <!--      </div>-->
       <div class="navigation">
         <p class="fas fa-chevron-left prev-btn">previous</p>
         <p class="fas fa-chevron-right next-btn">next</p>
@@ -186,18 +192,76 @@
         <p class="slide-icon">2</p>
         <p class="slide-icon">3</p>
         <p class="slide-icon">4</p>
-<!--        <p class="slide-icon">5</p>-->
+        <!--        <p class="slide-icon">5</p>-->
       </div>
     </div>
-</div>
-<img style="height: 30px; width: 300px; position: fixed;
+  </div>
+  <img style="height: 30px; width: 300px; position: fixed;
   bottom: 5px;
   right: 5px;" src="fig/gengifinal.gif" alt="gif">
-<footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a href = "mailto:gengibrand@gmail.com">Sebastian Hresko</a>.</footer>
+  <footer>© 2021 gengi™. All rights reserved. Privacy Policy. Created by - <a
+      href="mailto:gengibrand@gmail.com">Sebastian Hresko</a>.</footer>
 
-<script>
+  <script>
+    const season1Images = [
+      "fig/slideshow/IMG_1820.jpg",
+      "fig/slideshow/IMG_3671.JPG",
+      "fig/slideshow/IMG_3670.JPG",
+      "fig/slideshow/IMG_0008fixed.jpg"
+    ];
 
-const slider = document.querySelector(".slider");
+    const season2Images = [
+      "fig/slideshow/IMG_6315.PNG",
+      "fig/slideshow/IMG_6322.PNG",
+      "fig/slideshow/IMG_6335.jpg",
+      "fig/slideshow/IMG_6333.jpg"
+    ];
+
+    let currentSeason = season1Images; // Default season
+    // Function to highlight the selected season
+    function highlightSelectedSeason(selectedId) {
+      const season1 = document.getElementById('season-1');
+      const season2 = document.getElementById('season-2');
+
+      // Reset the text content and class for both seasons
+      season1.textContent = "season-1";
+      season2.textContent = "season-2";
+      season1.classList.remove('selected-season');
+      season2.classList.remove('selected-season');
+
+      // Add the 'selected-season' class and append '<<' to the selected season
+      const selectedElement = document.getElementById(selectedId);
+      selectedElement.classList.add('selected-season');
+      selectedElement.textContent += " <<";
+    }
+    // Function to update slider images
+    function updateSliderImages(images) {
+      const slides = document.querySelectorAll(".slide img");
+      slides.forEach((slide, index) => {
+        slide.src = images[index];
+      });
+    }
+
+    // Add event listeners for season selection
+    document.getElementById('season-1').addEventListener('click', () => {
+      currentSeason = season1Images;
+      updateSliderImages(currentSeason);
+      highlightSelectedSeason('season-1');
+
+    });
+
+    document.getElementById('season-2').addEventListener('click', () => {
+      currentSeason = season2Images;
+      updateSliderImages(currentSeason);
+      highlightSelectedSeason('season-2');
+    });
+
+    // Initialize slider with Season 1 images
+    updateSliderImages(currentSeason);
+    highlightSelectedSeason('season-1');
+
+
+    const slider = document.querySelector(".slider");
     const nextBtn = document.querySelector(".next-btn");
     const prevBtn = document.querySelector(".prev-btn");
     const slides = document.querySelectorAll(".slide");
@@ -216,7 +280,7 @@ const slider = document.querySelector(".slider");
 
       slideNumber++;
 
-      if(slideNumber > (numberOfSlides - 1)){
+      if (slideNumber > (numberOfSlides - 1)) {
         slideNumber = 0;
       }
 
@@ -235,7 +299,7 @@ const slider = document.querySelector(".slider");
 
       slideNumber--;
 
-      if(slideNumber < 0){
+      if (slideNumber < 0) {
         slideNumber = numberOfSlides - 1;
       }
 
@@ -247,7 +311,7 @@ const slider = document.querySelector(".slider");
     var playSlider;
 
     var repeater = () => {
-      playSlider = setInterval(function(){
+      playSlider = setInterval(function () {
         slides.forEach((slide) => {
           slide.classList.remove("active");
         });
@@ -257,7 +321,7 @@ const slider = document.querySelector(".slider");
 
         slideNumber++;
 
-        if(slideNumber > (numberOfSlides - 1)){
+        if (slideNumber > (numberOfSlides - 1)) {
           slideNumber = 0;
         }
 
@@ -276,7 +340,7 @@ const slider = document.querySelector(".slider");
     slider.addEventListener("mouseout", () => {
       repeater();
     });
-</script>
+  </script>
 
 </body>
 

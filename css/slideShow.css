@@ -17,9 +17,13 @@ position: fixed; /* Set the navbar to fixed position */
 bottom: 0;
 left: 0}
 
+.selected-season {
+  color: #00ff00;
+   /* Change text color to green */ /* Add underline for the selected season */
+}
 
  .wrapper{
-   margin: 20px;
+   margin: 75px;
  }
 .slider{
   position: relative;
