@@ -88,7 +88,7 @@ Pozdravuje, Tím
     $mail->AltBody = 'Wop Wop. Prave si spravil najlepšiu objednávku tohto roku. Treba ju ešte zaplatiť aby sme mali začo si ďalej užívať. 
     Spôsob platby je prevod na účet. Na nasledujúcom linku sa nachádzajú potrebné informácie k platbe (IBAN, Variabilný symbol, Suma). 
     https://payme.sk/?V=1&IBAN=SK8809000000005206752294&AM='.$am.'&CC=EUR&DT='.$date.'&PI=%2FVS'.$data["order"].'%2FSS'.$data["order"].'%2FKS'.$data["order"].'&MSG='.$data["code"].'&CN=GENGI+shop . 
-    Svoj gengi balíček očakávaj v priebehu 3 dní od zaplatenia na svojej pošte!';
+    Svoj gengi balíček očakávaj v priebehu 3 dní od zaplatenia na svojej pošte(pick-up point)!';
 
     $mail->send();
     echo 'Message sent aight';
