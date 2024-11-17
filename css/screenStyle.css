@@ -415,6 +415,21 @@ input[name="keyw"] {
   display: table;
 }
 
+
+.privacy {
+  display:block;
+  text-align: center; /* Center paragraphs */
+  width: 40%; /* Adjust width as needed */
+  margin: 0 auto; /* Center the div horizontally */
+  padding: 20px; /* Add padding for spacing */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  height: 600px; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+
 @media screen and (max-width: 599px) {
   .articles_in {
     position: absolute;

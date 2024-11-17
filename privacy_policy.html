@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>gengi-homepage</title>
+    <title>gengi-privacy-policy</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/screenStyle.css">
     <link rel="stylesheet" href="css/printStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    
+
     <link rel="apple-touch-icon" sizes="180x180" href="/fig/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/fig/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/fig/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/fig/favicon_io/site.webmanifest">
 
+
 </head>
 
 <body>
-
+<!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2R52hKfRRcniOsOk3Uu7T2?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
 <div style="display: flex; justify-content: space-between;">
     <p id="size"></p>
 
@@ -112,7 +113,7 @@
         }
     });
 </script>
-
+<!-- TODO: FIX LOGO SCREENSAVER FITMENT -->
 <script>
     var x = 0,
         y = 0,
@@ -146,43 +147,50 @@
     window.requestAnimationFrame(animate);
 
 </script>
+
 <div class="articles">
-    <img src="fig/tvfinal.gif">
-    <div class="articles_in">
-        <p data-title="Shop"><a class="links_tv" href="shop.html">Shop</a></p>
-        <p data-title="Lookbook"><a class="links_tv" href="lookbook.html">Lookbook</a></p>
-        <p data-title="About us"><a class="links_tv" href="about_us.html">About us</a></p>
-        <br>
-        <br>
+&lt;&lt; Privacy Policy &gt;&gt;<br><br>
+Effective Date: 17.11.2024<br><br>
 
+At gengi, we respect your privacy and are committed to protecting your personal information. Here's how we handle your data:<br><br>
 
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const links = document.querySelectorAll('.links_tv');
+1. What We Collect<br><br>
+We collect only the personal information needed to process your orders, such as:<br>
 
-            links.forEach(link => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent the default link behavior
-                    const href = link.getAttribute('href');
-                    link.classList.add('hover-effect');
-                    setTimeout(() => {
-                        window.location.href = href;
-                        link.classList.remove('hover-effect');
-                    }, 1000); // 2 seconds delay
-                });
-            });
-        });
-    </script>
-    
+>> Name, email, phone number, and shipping address.<br>
+>> Details about your orders.<br>
+We do not collect or store payment information. Payments are securely processed through third-party providers.<br><br>
+
+2. How We Use Your Data<br><br>
+Your data is used only to:<br>
+
+>> Process and deliver your orders.<br>
+>> Communicate with you about your orders or support inquiries.<br><br>
+3. Sharing Your Information<br><br>
+>> We do not share, sell, or trade your personal information.<br><br>
+
+4. Your Rights<br><br>
+You can:<br>
+>> Request to view or delete your personal information.<br>
+>> Contact us at gengibrand@gmail.com for any requests.<br><br>
+
+5. Data Security<br><br>
+>>We take steps to protect your information, but no system is completely secure. Contact us if you have any concerns.<br><br>
+
+6. Updates to This Policy<br><br>
+>> We may update this policy. Changes will be posted here with a revised date.<br><br>
+
+For questions, contact us at: gengibrand@gmail.com
 </div>
+<a class="links_goBack" href="index.html">&lt;&lt; return </a>
+
 <!--<img style="height: 100px; width: 1000px; position: fixed;-->
 <!--  bottom: 5px;-->
 <!--  right: 5px;" src="fig/gengifinal.gif" alt="gif">-->
 <img style="height: 30px; width: 300px; position: fixed;
   bottom: 5px;
   right: 5px;" src="fig/gengifinal.gif" alt="gif">
-<footer>© 2024 gengi™. All rights reserved. <a href="privacy_policy.html"> Privacy Policy</a>. Created by - <a id="footlink" href = "mailto:gengibrand@gmail.com">Sebastian Hresko & Tomas Berezny</a>.</footer>
+<footer>© 2024 gengi™. All rights reserved. Privacy Policy. Created by - <a id="footlink" href = "mailto:gengibrand@gmail.com">Sebastian Hresko & Tomas Berezny</a>.</footer>
 
 </footer>
 </body>
