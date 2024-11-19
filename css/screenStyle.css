@@ -23,7 +23,7 @@ h1 {
 
 .homepageh1 {
   color: white;
-  font-size: 10vw;
+  font-size: 8vw;
   margin: 0;
   text-align: center;
   position: fixed;
@@ -33,7 +33,7 @@ h1 {
 
 .homepageh2 {
   color: white;
-  font-size: 8vw;
+  font-size: 5vw;
   margin: 0;
   text-align: center;
   position: fixed; 
@@ -45,8 +45,19 @@ h1 {
   font-size: 1vw;
   margin: 0;
   text-align: center;
-  position: fixed;
-  top: 40vw; /* Center the text */
+  position: fixed; /* Center the text */
+}
+
+#p1 {
+  top: 17vw;
+}
+
+#p2 {
+  top: 37vw;
+}
+
+#p3 {
+  top: 45vw;
 }
 
 h3 {
