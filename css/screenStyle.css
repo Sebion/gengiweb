@@ -21,6 +21,34 @@ h1 {
 
 }
 
+.homepageh1 {
+  color: white;
+  font-size: 10vw;
+  margin: 0;
+  text-align: center;
+  position: fixed;
+  top: 1vw; /* Center the text */
+  font-family: 'VT323', monospace;
+}
+
+.homepageh2 {
+  color: white;
+  font-size: 8vw;
+  margin: 0;
+  text-align: center;
+  position: fixed; 
+  top: 10vw;/* Center the text */
+}
+
+.homepagep {
+  color: white;
+  font-size: 1vw;
+  margin: 0;
+  text-align: center;
+  position: fixed;
+  top: 40vw; /* Center the text */
+}
+
 h3 {
   margin-top: 3em;
   text-align: center;
