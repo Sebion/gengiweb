@@ -869,7 +869,7 @@ input[name="keyw"] {
 .item {
   max-width: 600px;
   /* Adjust as per your image dimensions */
-  max-height: 500px;
+  max-height: 480px;
   /* Adjust as per your image dimensions */
 }
 
