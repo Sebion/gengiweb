@@ -164,14 +164,15 @@
             <button id="next-btn" class="nav-btn" onclick="changeItem(1)">&gt;&gt;</button>
         </div>
         <p class="item-price">29,90$</p>
-        <div class="size-picker">
+        <div class="size-picker" hidden>
             <div id="small" class="sizeOpt">small</div>
-            -
+            <p class="pomlckas">-</p>
             <div id="medium" class="sizeOpt">medium</div>
-            -
+            <p class="pomlckas">-</p>
             <div id="large" class="sizeOpt">large</div>
-            -
+            <p class="pomlckas">-</p>
             <div id="xlarge" class="sizeOpt">xlarge</div>
+            <div id="one-size" class="sizeOpt">one-size</div>
             <!-- <label for="prod_size">Size:</label>
             <select id="prod_size" onchange="updateSize()">
               <option value="small">Small (S)</option>
@@ -241,19 +242,32 @@
     });
 </script>
 <script>
-    // JavaScript to handle the button click and show the overlay
-    document.getElementById('buy-btn').addEventListener('click', function () {
-        if (currentItemSize == "") {
-            var sizepicker = document.querySelector('.size-picker');
-            sizepicker.classList.add('error');
-            setTimeout(function () {
-                sizepicker.classList.remove('error');
-            }, 300);
+  // JavaScript to handle the button click and show the overlay
+  document.getElementById('buy-btn').addEventListener('click', function() {
+    if(isCap()){
+      window.location.href = 'form.html?code=noCap&product='+itemsTitles[currentItem]+'&size='+currentItemSize+'&item='+itemsIDs[currentItem]+'&price='+itemsPrices[currentItem];
+    }
+    if (currentItemSize == "") {
+      var sizepicker = document.querySelector('.size-picker');
+      sizepicker.classList.add('error');
+      setTimeout(function () {
+        sizepicker.classList.remove('error');
+      }, 300);
 
-        } else {
-            document.getElementById('overlay').style.display = 'block';
-        }
-    });
+    }
+    else{
+      document.getElementById('overlay').style.display = 'block';
+    }
+  });
+
+  function isCap(){
+    if(itemsInfos[currentItem] == "cap"){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 
     // JavaScript to handle the OK and Cancel buttons
     document.getElementById('okBtn').addEventListener('click', function () {
@@ -313,13 +327,14 @@
         document.getElementById('overlay').style.display = 'none';
     }
 
-    let currentItem = 0;
-    let currentItemSize = "";
-    let items = [];
-    let itemsIDs = []; // Add the names of your image files here
-    let itemsTitles = []; // Add the names of your image files here
-    let itemsPrices = []; // Add the names of your image files here
-    let itemsSizes = [];
+let currentItem = 0;
+let currentItemSize = "";
+let items = [];
+let itemsIDs = []; // Add the names of your image files here
+let itemsTitles = []; // Add the names of your image files here
+let itemsPrices = []; // Add the names of your image files here
+let itemsSizes = [];
+let itemsInfos = []; 
 
     function fetchProducts() {
         fetch('https://gengi.eu/getProducts.php/', {
@@ -336,7 +351,8 @@
                     itemsTitles.push(products[i][1]);
                     itemsPrices.push(products[i][2]);
                     itemsSizes.push(products[i][3].split("-"));
-
+                    itemsInfos.push(products[i][5]);
+                    
                     let newImage = new Image();
                     newImage.src = products[i][4];
                     items.push(newImage);
@@ -372,19 +388,42 @@
         var picker = document.querySelector('.size-picker');
 
         for (let i = 0; i < picker.children.length; i++) {
-
             if (!itemsSizes[currentItem].includes(picker.children[i].id)) {
                 picker.children[i].classList.add('inactive');
                 picker.children[i].classList.remove('bigger');
-
+                changePicker();
             } else {
-
                 picker.children[i].classList.remove('inactive');
             }
 
 
         }
 
+    }
+
+    function changePicker(){
+      if (itemsInfos[currentItem] == 'cap'){
+                  const sizeDivs = document.querySelectorAll('.sizeOpt');
+                  sizeDivs.forEach(div => {
+                    div.style.display = 'none';
+                  });
+                  const sizePoml = document.querySelectorAll('.pomlckas');
+                  sizePoml.forEach(div => {
+                    div.style.display = 'none';
+                  });
+                  document.getElementById('one-size').style.display = 'flex';
+                  document.getElementById('one-size').classList.remove('inactive');
+                }else{
+                  const sizeDivs = document.querySelectorAll('.sizeOpt');
+                  sizeDivs.forEach(div => {
+                    div.style.display = 'flex';
+                  });
+                  const sizePoml = document.querySelectorAll('.pomlckas');
+                  sizePoml.forEach(div => {
+                    div.style.display = 'flex';
+                  });
+                  document.getElementById('one-size').style.display = 'none';
+                }
     }
 
     document.addEventListener("DOMContentLoaded", function () {
