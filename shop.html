@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
     <title>gengi-shop</title>
     <meta charset="utf-8">
@@ -17,30 +17,30 @@
 </head>
 <body>
 <div style="display: flex; justify-content: space-between;">
-  <p id="size"></p>
+    <p id="size"></p>
 
-  <script>
+    <script>
 
-    var x = document.getElementById("size");
-    go();
-    window.addEventListener('resize', go);
+        var x = document.getElementById("size");
+        go();
+        window.addEventListener('resize', go);
 
-    function go() {
-      var w = document.documentElement.clientWidth;
-      var h = document.documentElement.clientHeight;
-      x.innerHTML = w + "px x " + h + "px";
-    }
-  </script>
+        function go() {
+            var w = document.documentElement.clientWidth;
+            var h = document.documentElement.clientHeight;
+            x.innerHTML = w + "px x " + h + "px";
+        }
+    </script>
 
-  <p id="time"></p>
+    <p id="time"></p>
 
-  <script>
-    document.getElementById('time').innerHTML = Date();
-    setInterval(function () {
-      document.getElementById('time').innerHTML = Date();
-    }, 1000);
+    <script>
+        document.getElementById('time').innerHTML = Date();
+        setInterval(function () {
+            document.getElementById('time').innerHTML = Date();
+        }, 1000);
 
-  </script>
+    </script>
 </div>
 <div id="screensaver"
      style="position: absolute; height: 100vh;
@@ -126,11 +126,11 @@
         const screenHeight = screensaver.clientHeight;
         const screenWidth = screensaver.clientWidth;
 
-        if (y + dvdHeight +60 >= screenHeight || y < 0) {
+        if (y + dvdHeight + 60 >= screenHeight || y < 0) {
             dirY *= -1;
 
         }
-        if (x + dvdWidth + 500>= screenWidth || x < 0) {
+        if (x + dvdWidth + 500 >= screenWidth || x < 0) {
             dirX *= -1;
 
         }
@@ -144,272 +144,276 @@
     window.requestAnimationFrame(animate);
 
 </script>
-  <div class="loader">
+<div class="loader">
     <p class="par" data-title="please wait for no reason..." style="display:bl">please wait for no reason...</p>
-  </div>
-  <a class="links_goBack" href="index.html">&lt;&lt; return </a>
+</div>
+<a class="links_goBack" href="index.html">&lt;&lt; return </a>
 
-  <!-- <header style="margin-top: 20px;">
-    <h3>Everything you need, to be part of gengi</h3>
-    <h4>is right here.</h4>
+<!-- <header style="margin-top: 20px;">
+  <h3>Everything you need, to be part of gengi</h3>
+  <h4>is right here.</h4>
 
-  </header> -->
+</header> -->
 
-  <div class="body-wrapper">
-  <div class="item-picker">
-    <div class="item-container">
-      <button id="prev-btn" class="nav-btn" onclick="changeItem(-1)">&lt;&lt;</button>
-      <div class="item-title">Item 1</div>
-      <img src="fig/sunburnt.gif" alt="Item 1" class="item">
-      <button id="next-btn" class="nav-btn" onclick="changeItem(1)">&gt;&gt;</button>
+<div class="body-wrapper">
+    <div class="item-picker">
+        <div class="item-container">
+            <button id="prev-btn" class="nav-btn" onclick="changeItem(-1)">&lt;&lt;</button>
+            <div class="item-title">Item 1</div>
+            <img src="fig/sunburnt.gif" alt="Item 1" class="item">
+            <button id="next-btn" class="nav-btn" onclick="changeItem(1)">&gt;&gt;</button>
+        </div>
+        <p class="item-price">29,90$</p>
+        <div class="size-picker">
+            <div id="small" class="sizeOpt">small</div>
+            -
+            <div id="medium" class="sizeOpt">medium</div>
+            -
+            <div id="large" class="sizeOpt">large</div>
+            -
+            <div id="xlarge" class="sizeOpt">xlarge</div>
+            <!-- <label for="prod_size">Size:</label>
+            <select id="prod_size" onchange="updateSize()">
+              <option value="small">Small (S)</option>
+              <option value="medium">Medium (M)</option>
+              <option value="large">Large (L)</option>
+              <option value="Xlarge">Extra large (XL)</option>
+            </select> -->
+        </div>
+        <button id="buy-btn">&lt&lt; Buy this item &gt&gt;</button>
+        <div class="size-chart">
+            <span class="size-chart-text">[size-chart]</span>
+            <table class="size-table">
+                <thead>
+                <tr>
+                    <th>size</th>
+                    <th>length(cm)</th>
+                    <th>width(cm)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>small</td>
+                    <td>65</td>
+                    <td>56</td>
+                </tr>
+                <tr>
+                    <td>medium</td>
+                    <td>68</td>
+                    <td>59</td>
+                </tr>
+                <tr>
+                    <td>large</td>
+                    <td>70</td>
+                    <td>62</td>
+                </tr>
+                <tr>
+                    <td>xlarge</td>
+                    <td>73</td>
+                    <td>65</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <p class="item-price">29,90$</p>
-    <div class="size-picker">
-      <div id="small" class="sizeOpt">small</div>-
-      <div id="medium" class="sizeOpt">medium</div>-
-      <div id="large" class="sizeOpt">large</div>-
-      <div id="xlarge" class="sizeOpt">xlarge</div>
-      <!-- <label for="prod_size">Size:</label>
-      <select id="prod_size" onchange="updateSize()">
-        <option value="small">Small (S)</option>
-        <option value="medium">Medium (M)</option>
-        <option value="large">Large (L)</option>
-        <option value="Xlarge">Extra large (XL)</option>
-      </select> -->
-    </div>
-    <button id="buy-btn">&lt&lt; Buy this item &gt&gt;</button>
-    <div class="size-chart">
-      <span class="size-chart-text">[size-chart]</span>
-      <table class="size-table">
-          <thead>
-              <tr>
-                  <th>size</th>
-                  <th>length(cm)</th>
-                  <th>width(cm)</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>small</td>
-                  <td>65</td>
-                  <td>56</td>
-              </tr>
-              <tr>
-                  <td>medium</td>
-                  <td>68</td>
-                  <td>59</td>
-              </tr>
-              <tr>
-                  <td>large</td>
-                  <td>70</td>
-                  <td>62</td>
-              </tr>
-              <tr>
-                  <td>xlarge</td>
-                  <td>73</td>
-                  <td>65</td>
-              </tr>
-          </tbody>
-      </table>
-  </div>
-  </div>
 </div>
 <div class="overlay" id="overlay">
-  <!-- Modal container -->
-  <div class="modal">
-    <label for="input">Enter purchase key: </label>
-    <input type="text" id="inputField" style="width: 100%;" />
-    <button id="okBtn">Ok</button>
-    <button id="cancelBtn">Cancel</button>
-    <i class="fas fa-info-circle info-icon" id="infoIcon">info</i>
-    <div class="tooltip" id="tooltip">You can obtain this key from our posts and stories on our ig(@gengiclo) or various other sources.</div>
-  </div>
+    <!-- Modal container -->
+    <div class="modal">
+        <label for="input">Enter purchase key: </label>
+        <input type="text" id="inputField" style="width: 100%;"/>
+        <button id="okBtn">Ok</button>
+        <button id="cancelBtn">Cancel</button>
+        <i class="fas fa-info-circle info-icon" id="infoIcon">info</i>
+        <div class="tooltip" id="tooltip">You can obtain this key from our posts and stories on our ig(@gengiclo) or
+            various other sources.
+        </div>
+    </div>
 </div>
 <script>
-  // JavaScript to handle the info icon tooltip
-  document.getElementById('infoIcon').addEventListener('mouseover', function() {
-    document.getElementById('tooltip').style.display = 'block';
-  });
+    // JavaScript to handle the info icon tooltip
+    document.getElementById('infoIcon').addEventListener('mouseover', function () {
+        document.getElementById('tooltip').style.display = 'block';
+    });
 
-  document.getElementById('infoIcon').addEventListener('mouseout', function() {
-    document.getElementById('tooltip').style.display = 'none';
-  });
+    document.getElementById('infoIcon').addEventListener('mouseout', function () {
+        document.getElementById('tooltip').style.display = 'none';
+    });
 </script>
 <script>
-  // JavaScript to handle the button click and show the overlay
-  document.getElementById('buy-btn').addEventListener('click', function() {
-    if (currentItemSize == "") {
-      var sizepicker = document.querySelector('.size-picker');
-      sizepicker.classList.add('error');
-      setTimeout(function () {
-        sizepicker.classList.remove('error');
-      }, 300);
+    // JavaScript to handle the button click and show the overlay
+    document.getElementById('buy-btn').addEventListener('click', function () {
+        if (currentItemSize == "") {
+            var sizepicker = document.querySelector('.size-picker');
+            sizepicker.classList.add('error');
+            setTimeout(function () {
+                sizepicker.classList.remove('error');
+            }, 300);
 
-    }
-    else{
-      document.getElementById('overlay').style.display = 'block';
-    }
-  });
+        } else {
+            document.getElementById('overlay').style.display = 'block';
+        }
+    });
 
-  // JavaScript to handle the OK and Cancel buttons
-  document.getElementById('okBtn').addEventListener('click', function() {
-      var inputFieldValue = document.getElementById('inputField').value;
-      var expectedValue = 'pes'; // Replace with the expected value
+    // JavaScript to handle the OK and Cancel buttons
+    document.getElementById('okBtn').addEventListener('click', function () {
+        var inputFieldValue = document.getElementById('inputField').value;
+        var expectedValue = 'pes'; // Replace with the expected value
 
-      const codeJson = { "code" : inputFieldValue }
-      fetch('https://gengi.eu/checkCodes.php/', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(codeJson)
-                })
-                .then(response => response.text().then(function (text) {
-                  console.log(text);
-                  if(text == "f") {
-                    console.log("good code"); 
+        const codeJson = {"code": inputFieldValue}
+        fetch('https://gengi.eu/checkCodes.php/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(codeJson)
+        })
+            .then(response => response.text().then(function (text) {
+                console.log(text);
+                if (text == "f") {
+                    console.log("good code");
                     // Input value matches expected value, do something here (e.g., closeOverlay())
                     document.getElementById('inputField').classList.add('green-border');
                     // Remove the green-border class after the animation ends
-       
+
                     // Redirect the user to another page after one second
-                    setTimeout(function() {
-                      document.getElementById('inputField').classList.remove('green-border');
-                      // closeOverlay();
-                      window.location.href = 'form.html?code='+inputFieldValue+'&product='+itemsTitles[currentItem]+'&size='+currentItemSize+'&item='+itemsIDs[currentItem]+'&price='+itemsPrices[currentItem]; // Replace with the desired page URL
+                    setTimeout(function () {
+                        document.getElementById('inputField').classList.remove('green-border');
+                        // closeOverlay();
+                        window.location.href = 'form.html?code=' + inputFieldValue + '&product=' + itemsTitles[currentItem] + '&size=' + currentItemSize + '&item=' + itemsIDs[currentItem] + '&price=' + itemsPrices[currentItem]; // Replace with the desired page URL
                     }, 1000);
-                  }
-                  else if(text == "t") {
+                } else if (text == "t") {
                     console.log("expired code");
                     // Input value does not match expected value, show shake animation
                     document.getElementById('inputField').classList.add('error');
                     // Remove the shake class after the animation ends
-                    document.getElementById('inputField').addEventListener('animationend', function() {
-                      document.getElementById('inputField').classList.remove('error');
+                    document.getElementById('inputField').addEventListener('animationend', function () {
+                        document.getElementById('inputField').classList.remove('error');
                     });
-                  }
-                  else{
+                } else {
                     console.log("wrong code");
                     // Input value does not match expected value, show shake animation
                     document.getElementById('inputField').classList.add('error');
                     // Remove the shake class after the animation ends
-                    document.getElementById('inputField').addEventListener('animationend', function() {
-                      document.getElementById('inputField').classList.remove('error');
+                    document.getElementById('inputField').addEventListener('animationend', function () {
+                        document.getElementById('inputField').classList.remove('error');
                     });
-                  };
-}));
+                }
+                ;
+            }));
     });
 
-  document.getElementById('cancelBtn').addEventListener('click', function() {
-    closeOverlay();
-  });
+    document.getElementById('cancelBtn').addEventListener('click', function () {
+        closeOverlay();
+    });
 
-  // Function to close the overlay
-  function closeOverlay() {
-    document.getElementById('overlay').style.display = 'none';
-  }
+    // Function to close the overlay
+    function closeOverlay() {
+        document.getElementById('overlay').style.display = 'none';
+    }
 
-let currentItem = 0;
-let currentItemSize = "";
-let items = [];
-let itemsIDs = []; // Add the names of your image files here
-let itemsTitles = []; // Add the names of your image files here
-let itemsPrices = []; // Add the names of your image files here
-let itemsSizes = []; 
+    let currentItem = 0;
+    let currentItemSize = "";
+    let items = [];
+    let itemsIDs = []; // Add the names of your image files here
+    let itemsTitles = []; // Add the names of your image files here
+    let itemsPrices = []; // Add the names of your image files here
+    let itemsSizes = [];
 
-function fetchProducts(){
-  fetch('https://gengi.eu/getProducts.php/', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(response => response.json().then(function (products){
-                  for (let i = 0; i < products.length; i++) {
+    function fetchProducts() {
+        fetch('https://gengi.eu/getProducts.php/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json().then(function (products) {
+                for (let i = 0; i < products.length; i++) {
                     console.log(products[i]);
                     itemsIDs.push(products[i][0]);
                     itemsTitles.push(products[i][1]);
                     itemsPrices.push(products[i][2]);
                     itemsSizes.push(products[i][3].split("-"));
-                    
+
                     let newImage = new Image();
                     newImage.src = products[i][4];
                     items.push(newImage);
                     console.log(newImage);
-                  }
-                  // Initialize the item picker with the first item
-                  changeItem(0);
-                  
-                  //document.querySelector('.loader').style.display = 'none';
+                }
+                // Initialize the item picker with the first item
+                changeItem(0);
 
-                }));
-}
+                //document.querySelector('.loader').style.display = 'none';
 
-var itemImage = document.querySelector('.item');
-var itemTitle = document.querySelector('.item-title');
-var itemPrice = document.querySelector('.item-price');
-
-fetchProducts();
-
-// Function to change item
-function changeItem(step) {
-    currentItem += step;
-    if (currentItem < 0) {
-      currentItem = items.length - 1;
-    } else if (currentItem >= items.length) {
-      currentItem = 0;
+            }));
     }
-    console.log(items[currentItem]);
-    itemImage.src = items[currentItem].src;
-    itemTitle.innerHTML = itemsTitles[currentItem];
-    itemPrice.innerHTML = itemsPrices[currentItem]+"€";
 
-    var picker = document.querySelector('.size-picker');
+    var itemImage = document.querySelector('.item');
+    var itemTitle = document.querySelector('.item-title');
+    var itemPrice = document.querySelector('.item-price');
 
-    for (let i = 0; i < picker.children.length; i++) {
+    fetchProducts();
 
-            if(!itemsSizes[currentItem].includes(picker.children[i].id)){
+    // Function to change item
+    function changeItem(step) {
+        currentItem += step;
+        if (currentItem < 0) {
+            currentItem = items.length - 1;
+        } else if (currentItem >= items.length) {
+            currentItem = 0;
+        }
+        console.log(items[currentItem]);
+        itemImage.src = items[currentItem].src;
+        itemTitle.innerHTML = itemsTitles[currentItem];
+        itemPrice.innerHTML = itemsPrices[currentItem] + "€";
+
+        var picker = document.querySelector('.size-picker');
+
+        for (let i = 0; i < picker.children.length; i++) {
+
+            if (!itemsSizes[currentItem].includes(picker.children[i].id)) {
                 picker.children[i].classList.add('inactive');
                 picker.children[i].classList.remove('bigger');
 
-            }
-            else{
+            } else {
 
                 picker.children[i].classList.remove('inactive');
             }
 
 
-    } 
-    
-}
+        }
 
-document.addEventListener("DOMContentLoaded", function() {
-  const children = document.querySelectorAll('.sizeOpt');
-  
-  children.forEach(child => {
-    child.addEventListener('click', function() {
-      children.forEach(c => c.classList.remove('bigger')); // Reset all children
-      this.classList.add('bigger'); // Add 'bigger' class to the clicked child
-      currentItemSize = this.id;
-      console.log(currentItemSize);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const children = document.querySelectorAll('.sizeOpt');
+
+        children.forEach(child => {
+            child.addEventListener('click', function () {
+                children.forEach(c => c.classList.remove('bigger')); // Reset all children
+                this.classList.add('bigger'); // Add 'bigger' class to the clicked child
+                currentItemSize = this.id;
+                console.log(currentItemSize);
+            });
+        });
     });
-  });
-});
 
-function updateSize() {
-  const selectedSize = document.getElementById("size").value;
-  // Perform actions based on the selected size if needed
-  console.log("Selected Size:", selectedSize);
-}
+    function updateSize() {
+        const selectedSize = document.getElementById("size").value;
+        // Perform actions based on the selected size if needed
+        console.log("Selected Size:", selectedSize);
+    }
 
 </script>
 
 <img style="height: 30px; width: 300px; position: fixed;
   bottom: 5px;
   right: 5px;" src="fig/gengifinal.gif" alt="gif">
-<footer>© 2024 gengi™. All rights reserved. <a href="privacy_policy.html"> Privacy Policy</a>. Created by - <a id="footlink" href = "mailto:gengibrand@gmail.com">Sebastian Hresko & Tomas Berezny</a>.</footer>
+<footer>© 2024 gengi™. All rights reserved. <a href="privacy_policy.html"> Privacy Policy</a>. Created by - <a id="footlink" href = "https://spacecode.sk">SpaceCode</a>.</footer>
+
+</footer>
 
 </body>
 
