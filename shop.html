@@ -147,7 +147,7 @@
 <div class="loader">
     <p class="par" data-title="please wait for no reason..." style="display:bl">please wait for no reason...</p>
 </div>
-<a class="links_goBack" href="index.html">&lt;&lt; return </a>
+<a class="links_goBack" href="/index">&lt;&lt; return </a>
 
 <!-- <header style="margin-top: 20px;">
   <h3>Everything you need, to be part of gengi</h3>
@@ -245,7 +245,7 @@
   // JavaScript to handle the button click and show the overlay
   document.getElementById('buy-btn').addEventListener('click', function() {
     if(isCap()){
-      window.location.href = 'form.html?code=noCap&product='+itemsTitles[currentItem]+'&size='+currentItemSize+'&item='+itemsIDs[currentItem]+'&price='+itemsPrices[currentItem];
+      window.location.href = 'form?code=noCap&product='+itemsTitles[currentItem]+'&size='+currentItemSize+'&item='+itemsIDs[currentItem]+'&price='+itemsPrices[currentItem];
     }
     if (currentItemSize == "") {
       var sizepicker = document.querySelector('.size-picker');
@@ -295,7 +295,7 @@
                     setTimeout(function () {
                         document.getElementById('inputField').classList.remove('green-border');
                         // closeOverlay();
-                        window.location.href = 'form.html?code=' + inputFieldValue + '&product=' + itemsTitles[currentItem] + '&size=' + currentItemSize + '&item=' + itemsIDs[currentItem] + '&price=' + itemsPrices[currentItem]; // Replace with the desired page URL
+                        window.location.href = 'form?code=' + inputFieldValue + '&product=' + itemsTitles[currentItem] + '&size=' + currentItemSize + '&item=' + itemsIDs[currentItem] + '&price=' + itemsPrices[currentItem]; // Replace with the desired page URL
                     }, 1000);
                 } else if (text == "t") {
                     console.log("expired code");
@@ -451,7 +451,7 @@ let itemsInfos = [];
 <img style="height: 30px; width: 300px; position: fixed;
   bottom: 5px;
   right: 5px;" src="fig/gengifinal.gif" alt="gif">
-<footer>© 2024 gengi™. All rights reserved. <a href="privacy_policy.html"> Privacy Policy</a>. Created in collaboration with - <a id="footlink" href = "https://spacecode.sk">SpaceCode</a>.</footer>
+<footer>© 2024 gengi™. All rights reserved. <a href="/privacy_policy"> Privacy Policy</a>. Created in collaboration with - <a id="footlink" href = "https://spacecode.sk">SpaceCode</a>.</footer>
 
 </footer>
 
