@@ -1,3 +1,16 @@
 RewriteEngine On
+
+# 1. Redirect www to non-www (canonicalization)
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+
+# 2. Redirect index.html to root (/)
+RewriteRule ^index\.html$ / [R=301,L]
+
+# 3. Remove .html extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 4. Set index.html as the default file for directories
+DirectoryIndex index.html
