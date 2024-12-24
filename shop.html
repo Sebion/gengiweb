@@ -345,6 +345,7 @@ let itemsInfos = [];
             }
         })
             .then(response => response.json().then(function (products) {
+                products.reverse();
                 for (let i = 0; i < products.length; i++) {
                     console.log(products[i]);
                     itemsIDs.push(products[i][0]);
