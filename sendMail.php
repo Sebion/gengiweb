@@ -24,7 +24,7 @@ $conn = pg_connect("host=postgresql.r5.websupport.sk port=5432 dbname=gengi_web_
     }
     else{
       $am = pg_fetch_result($result, 0, 0);
-      $am += 3;
+      // $am += 3;
     }
   } else {
   }
