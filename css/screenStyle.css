@@ -227,19 +227,19 @@ input[type=checkbox] {
 
 input[type=text] {
   margin-bottom: 0.6em;
-  width: 100%;
+  width: 80%;
 
 }
 
 input[type=email] {
   margin-bottom: 0.6em;
-  width: 100%;
+  width: 80%;
 
 }
 
 input[type=tel] {
   margin-bottom: 0.6em;
-  width: 100%;
+  width: 60%;
 
 }
 
