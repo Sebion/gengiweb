@@ -358,20 +358,27 @@ input[name="keyw"] {
 }
 
 #okBtn {
-  font-size: 16px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 18px;
 }
 
 #cancelBtn {
-  font-size: 16px;
+  margin: 5px;
+  font-size: 18px;
 
 }
 
 #yesBtn {
-  font-size: 16px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 19px;
 }
 
 #goBackBtn {
-  font-size: 16px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 18px;
 
 }
 
@@ -923,7 +930,7 @@ input[name="keyw"] {
 
 
 .overlay {
-  display: none;
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
