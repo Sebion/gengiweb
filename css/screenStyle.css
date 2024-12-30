@@ -175,7 +175,7 @@ textarea {
   font-family: 'VT323', monospace;
   display: block;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
 
 }
 
@@ -193,6 +193,12 @@ label {
   display: inline;
 }
 
+.checkbox_priv>input,
+label {
+  font-family: 'VT323', monospace;
+  display: inline;
+}
+
 label {
   font-family: 'VT323', monospace;
 }
@@ -200,7 +206,7 @@ label {
 #submitBtn {
   padding: 0.5em 1em;
   font-family: 'VT323', monospace;
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 0.5em;
   display: inline;
 }
@@ -220,42 +226,42 @@ input[type=checkbox] {
 }
 
 input[type=text] {
-  margin-bottom: 0.5em;
-  width: 70%;
+  margin-bottom: 0.6em;
+  width: 100%;
 
 }
 
 input[type=email] {
-  margin-bottom: 0.5em;
-  width: 70%;
+  margin-bottom: 0.6em;
+  width: 100%;
 
 }
 
 input[type=tel] {
-  margin-bottom: 0.5em;
-  width: 70%;
+  margin-bottom: 0.6em;
+  width: 100%;
 
 }
 
 input[type=number] {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.6em;
   width: 70%;
 
 }
 
 input[type=firstName] {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.6em;
   width: 70%;
 
 }
 
 input[type=url] {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.6em;
   width: 70%;
 }
 
 input[type=lastName] {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.6em;
   width: 70%;
 
 }
@@ -267,7 +273,7 @@ input[type=reset] {
 }
 
 input[name="keyw"] {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.6em;
   width: 70%;
 }
 

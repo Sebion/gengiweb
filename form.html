@@ -200,6 +200,11 @@
                 <input type="checkbox" id="sub" name="sub">
                 <label>Subscribe to newsletter. </label>
             </div>
+
+            <div class="checkbox_priv">
+                <input type="checkbox" id="priv" name="priv">
+                <label>I agree with terms and conditions: <a href="/privacy_policy"> Privacy Policy</a>. </label>
+            </div>
             <button type="button" id="submitBtn" onclick="validate()">Submit</button>
             <!-- <input type="submit" value="Submit"> -->
             <input type="reset" value="Reset">
@@ -334,11 +339,14 @@
             var fname = document.getElementById('fname');
             var lname = document.getElementById('lname');
             var email = document.getElementById('email');
+            var email2 = document.getElementById('email2');
             var phone = document.getElementById('phone');
             var country = document.getElementById('country')
             var city = document.getElementById('city');
             var street = document.getElementById('street');
             var postal = document.getElementById('postal');
+            var priv = document.getElementById('priv');
+            var checkbox_priv = document.querySelector('.checkbox_priv');
 
             var isOk = true;
 
@@ -407,6 +415,13 @@
                 }, 300);
                 isOk=false;
             }
+            if (!priv.checked) {
+                checkbox_priv.classList.add('error');
+                setTimeout(function () {
+                    checkbox_priv.classList.remove('error');
+                }, 300);
+                isOk = false;
+}
 
 
             if(isOk) {
