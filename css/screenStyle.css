@@ -399,7 +399,7 @@ input[name="keyw"] {
 
 .item-picker {
   text-align: center;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .size-picker {
@@ -877,7 +877,7 @@ input[name="keyw"] {
 .item {
   max-width: 600px;
   /* Adjust as per your image dimensions */
-  max-height: 480px;
+  max-height: 460px;
   /* Adjust as per your image dimensions */
 }
 
