@@ -155,6 +155,7 @@
       <!-- <p style="color:#00ff00; font-size: 21px; text-decoration: underline;">LOOK-BOOK</p> -->
       <p class="par" id="season-1">season-1</p>
       <p class="par" id="season-2">season-2</p>
+      <p class="par" id="season-3">season-3</p>
 
     </div>
 
@@ -218,17 +219,28 @@
       "fig/slideshow/IMG_6333.jpg"
     ];
 
+    const season3Images = [
+      "fig/slideshow/cepka/capka1.jpg",
+      "fig/slideshow/cepka/capka2.jpg",
+      "fig/slideshow/cepka/capka3.jpg",
+      "fig/slideshow/cepka/capka4.jpg"
+    ];
+
     let currentSeason = season1Images; // Default season
     // Function to highlight the selected season
     function highlightSelectedSeason(selectedId) {
       const season1 = document.getElementById('season-1');
       const season2 = document.getElementById('season-2');
+      const season3 = document.getElementById('season-3');
 
       // Reset the text content and class for both seasons
       season1.textContent = "season-1";
       season2.textContent = "season-2";
+      season3.textContent = "season-3";
+
       season1.classList.remove('selected-season');
       season2.classList.remove('selected-season');
+      season3.classList.remove('selected-season');
 
       // Add the 'selected-season' class and append '<<' to the selected season
       const selectedElement = document.getElementById(selectedId);
@@ -257,9 +269,14 @@
       highlightSelectedSeason('season-2');
     });
 
+    document.getElementById('season-3').addEventListener('click', () => {
+      currentSeason = season3Images;
+      updateSliderImages(currentSeason);
+      highlightSelectedSeason('season-3');
+    });
     // Initialize slider with Season 1 images
     updateSliderImages(currentSeason);
-    highlightSelectedSeason('season-1');
+    highlightSelectedSeason('season-3');
 
 
     const slider = document.querySelector(".slider");
