@@ -293,6 +293,8 @@ input[name="keyw"] {
 
 .articles_in {
   position: absolute;
+  font-size: 18px;
+
 }
 
 .links_tv {
