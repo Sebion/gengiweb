@@ -694,6 +694,7 @@ input[name="keyw"] {
   font-family: 'VT323', monospace;
   margin-top: 0.5em;
   display: block;
+  font-size: 18px;
 
 }
 
@@ -714,6 +715,7 @@ input[name="keyw"] {
   text-decoration: none;
   margin: 2em;
   position: absolute;
+  font-size: 18px;
 
   /* display: block; */
 }
