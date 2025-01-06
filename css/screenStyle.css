@@ -341,6 +341,9 @@ input[name="keyw"] {
   color: #2fff00;
 
 }
+#buy-btn.disabled {
+  color: #2fff00; /* Ensure text color is green when disabled */
+}
 
 .item-title {
   font-size: 20px;
@@ -710,13 +713,34 @@ input[name="keyw"] {
   text-align: center;
 }
 
-.links_goBack {
+/* .links_goBack {
   font-family: 'VT323', monospace;
   text-decoration: none;
   margin: 2em;
   position: absolute;
   font-size: 18px;
 
+} */
+
+.links_goBack {
+  font-family: 'VT323', monospace;
+  text-decoration: none;
+  margin: 2em;
+  position: absolute;
+  font-size: 20px;
+  left: 1em;
+  top: 1em;
+  /* display: block; */
+}
+
+.links_bag {
+  font-family: 'VT323', monospace;
+  text-decoration: none;
+  margin: 2em;
+  position: absolute;
+  font-size: 20px;
+  right: 1em;
+  top: 1em;
   /* display: block; */
 }
 
@@ -724,6 +748,11 @@ input[name="keyw"] {
   color: #2fff00;
 
 }
+.links_bag:hover {
+  color: #2fff00;
+
+}
+
 
 .loader {
   position: fixed;
