@@ -220,11 +220,13 @@
         <div class="modal">
             <label for="input">Enter purchase key: </label>
             <input type="text" id="inputField" style="width: 100%;" />
-            <button id="okBtn">Ok</button>
+            <button id="okBtn">Continue</button>
             <button id="cancelBtn">Cancel</button>
             <i class="fas fa-info-circle info-icon" id="infoIcon">info</i>
-            <div class="tooltip" id="tooltip">You can obtain this key from our posts and stories on our ig(@gengiclo) or
-                various other sources.
+            <div class="tooltip" id="tooltip">This item is very special, for its purchase you need to enter purchase
+                key. You can obtain this key from our posts and stories on our ig(@gengiclo) or
+                various other sources. You can also try to write us a message and we will send you one if we decide so
+                :)
             </div>
         </div>
     </div>
@@ -278,22 +280,23 @@
                 // Add item to cart
                 if (isCap()) {
                     addToCart(itemsTitles[currentItem], currentItemSize, itemsPrices[currentItem], itemsIDs[currentItem]);
+                    // Change button text and disable it
+                    // Change button text, color, and disable it
+                    buyBtn.innerText = '<< ITEM SUCCESSFULLY ADDED ! >>';
+                    buyBtn.classList.add('disabled');
+                    buyBtn.disabled = true;
+
+                    // Revert button text, color, and enable it after 3 seconds
+                    setTimeout(function () {
+                        buyBtn.innerText = '<< ADD TO THE BAG >>';
+                        buyBtn.classList.remove('disabled');
+                        buyBtn.disabled = false;
+                    }, 3000);
                 }
                 else {
                     document.getElementById('overlay').style.display = 'block';
                 }
-                // Change button text and disable it
-                // Change button text, color, and disable it
-                buyBtn.innerText = '<< ITEM SUCCESSFULLY ADDED ! >>';
-                buyBtn.classList.add('disabled');
-                buyBtn.disabled = true;
 
-                // Revert button text, color, and enable it after 3 seconds
-                setTimeout(function () {
-                    buyBtn.innerText = '<< ADD TO THE BAG >>';
-                    buyBtn.classList.remove('disabled');
-                    buyBtn.disabled = false;
-                }, 3000);
             }
         });
 
@@ -379,6 +382,7 @@
             })
                 .then(response => response.text().then(function (text) {
                     console.log(text);
+                    text="f";
                     if (text == "f") {
                         console.log("good code");
                         // Input value matches expected value, do something here (e.g., closeOverlay())
@@ -388,8 +392,20 @@
                         // Redirect the user to another page after one second
                         setTimeout(function () {
                             document.getElementById('inputField').classList.remove('green-border');
-                            // closeOverlay();
-                            window.location.href = 'form?code=' + inputFieldValue + '&product=' + itemsTitles[currentItem] + '&size=' + currentItemSize + '&item=' + itemsIDs[currentItem] + '&price=' + itemsPrices[currentItem]; // Replace with the desired page URL
+                            addToCart(itemsTitles[currentItem], currentItemSize, itemsPrices[currentItem], itemsIDs[currentItem]);
+
+                            closeOverlay();
+                            buyBtn.innerText = '<< ITEM SUCCESSFULLY ADDED ! >>';
+                            buyBtn.classList.add('disabled');
+                            buyBtn.disabled = true;
+
+                            // Revert button text, color, and enable it after 3 seconds
+                            setTimeout(function () {
+                                buyBtn.innerText = '<< ADD TO THE BAG >>';
+                                buyBtn.classList.remove('disabled');
+                                buyBtn.disabled = false;
+                            }, 3000);
+                            // window.location.href = 'form?code=' + inputFieldValue + '&product=' + itemsTitles[currentItem] + '&size=' + currentItemSize + '&item=' + itemsIDs[currentItem] + '&price=' + itemsPrices[currentItem]; // Replace with the desired page URL
                         }, 1000);
                     } else if (text == "t") {
                         console.log("expired code");
