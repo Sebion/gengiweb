@@ -889,7 +889,7 @@ input[name="keyw"] {
     font-size: 30px;
   }
   .item-price {
-    margin-top: 30px;
+    margin-top: 15px;
     font-size:45px; /* Font size for screens between 600px and 1200px */
   }
   .size-picker {
@@ -900,7 +900,7 @@ input[name="keyw"] {
   }
 
   .chose-size {
-    margin-top: 100px;
+    margin-top: 50px;
     font-size: 35px;
     margin-bottom: 10px;
   }
