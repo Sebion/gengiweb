@@ -306,6 +306,16 @@ input[name="keyw"] {
   justify-content: center;
   align-items: center;
 }
+.articles_boutus {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
 .articles>img {
   position: relative;
@@ -677,6 +687,7 @@ input[name="keyw"] {
 .shipping-free{
   font-size: 12px;
 }
+
 
 @media screen and (max-width: 599px) {
   .articles_in {
