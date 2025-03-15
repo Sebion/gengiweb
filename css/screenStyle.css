@@ -306,6 +306,7 @@ input[name="keyw"] {
   justify-content: center;
   align-items: center;
 }
+
 .articles_boutus {
   position: fixed;
   width: 100%;
@@ -316,6 +317,7 @@ input[name="keyw"] {
   align-items: center;
   text-align: center;
 }
+
 
 .articles>img {
   position: relative;
